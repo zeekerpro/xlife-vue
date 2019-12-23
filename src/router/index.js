@@ -11,14 +11,12 @@ import blogRoutes from "./blog";
 const routes = [
 	{
 		path: "/",
-		name: "layouts",
+		name: "root",
 		component: () => import("@/layouts/default"),
 		children: [
-			userRoutes
-			/*
+			userRoutes,
 			expenseRoutes,
 			blogRoutes
-			*/
 		]
 	},
 	{

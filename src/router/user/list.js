@@ -3,5 +3,8 @@ export default {
 	name: 'list',
 	component: () => { 
 		return import("@/views/user/List") 
+	},
+	meta: {
+		auth: true
 	}
 }
