@@ -2,6 +2,6 @@ export default {
 	path: 'login',
 	name: 'login',
 	component: () => {
-		return import("@/views/user/Login");
+		return import(/* webpackChunkName: "user" */"@/views/user/Login");
 	}
 }

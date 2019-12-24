@@ -2,6 +2,6 @@ export default {
 	path: 'register',
 	name: 'register',
 	component: () => {
-		return import("@/views/user/Register");
+		return import(/* webpackChunkName */"@/views/user/Register");
 	}
 }

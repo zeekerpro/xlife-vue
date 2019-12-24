@@ -8,6 +8,9 @@ import userRoutes from "./user";
 import expenseRoutes from "./expense";
 import blogRoutes from "./blog";
 
+// 路由守卫
+import {monitor} from "./monitor.js";
+
 const routes = [
 	{
 		path: "/",
@@ -30,5 +33,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+// 监视路由跳转
+monitor(router);
 
 export default router;
