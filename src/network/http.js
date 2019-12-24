@@ -8,7 +8,8 @@ import axios from 'axios';
 // 每次请求都会创建一个实例，请求之间互不影响
 const httpService = () => axios.create({
 	baseUrl: process.env.VUE_APP_BASE_API,
-	timeout: 5000
+	timeout: 5000,
+	withCredentials: false // 禁止浏览器发送cookie
 });
 
 // 2. request interceptors 
