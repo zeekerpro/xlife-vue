@@ -1,6 +1,6 @@
 <template>
 	<div>
-		user register page
+		user signup page
 	</div>
 </template>
 <script></script>

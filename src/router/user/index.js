@@ -1,5 +1,5 @@
 import loginRoute from "./signin.js";
-import registerRoute from "./register.js";
+import registerRoute from "./signup.js";
 import listRoute from "./list.js";
 import profileRoute from "./profile.js";
 
