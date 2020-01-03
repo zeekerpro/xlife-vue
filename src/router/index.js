@@ -8,7 +8,7 @@ import userRoutes from "./user";
 import expenseRoutes from "./expense";
 import blogRoutes from "./blog";
 
-// 路由守卫
+// 路由守卫监控路由跳转
 import {monitor} from "./monitor.js";
 
 const routes = [
