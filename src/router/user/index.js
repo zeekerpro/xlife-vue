@@ -1,5 +1,5 @@
-import loginRoute from "./signin.js";
-import registerRoute from "./signup.js";
+import signinRoute from "./signin.js";
+import signupRoute from "./signup.js";
 import listRoute from "./list.js";
 import profileRoute from "./profile.js";
 
@@ -11,8 +11,8 @@ export default {
 		render: h => h("router-view")
 	},
 	children: [
-		loginRoute,
-		registerRoute,
+		signinRoute,
+		signupRoute,
 		profileRoute,
 		listRoute
 	]
