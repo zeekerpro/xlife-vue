@@ -1,6 +1,15 @@
 module.exports = {
 	lintOnSave: false, 
 	publicPath: "/",
+	css: {
+		loaderOptions: {
+			scss: {
+				prependData: `
+					@import "@/assets/styles/app.scss";
+				`
+			}
+		}
+	},
 	devServer: {
 		port: 8080,
 		/*

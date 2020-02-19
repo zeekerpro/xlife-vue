@@ -1,7 +1,9 @@
 <template>
 	<div>
 		default layout
-		<router-view></router-view>
+		<router-view>
+		</router-view>
+		<card-slider></card-slider>
 	</div>
 </template>
 
@@ -11,4 +13,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+</style>
