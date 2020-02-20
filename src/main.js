@@ -3,8 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "@/plugins/base";
+import "@plugins/fontawesome";
 import "@/assets/styles/app.scss";
-import "@babel/polyfill";
 
 Vue.config.productionTip = false;
 
