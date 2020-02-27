@@ -1,2 +1,9 @@
 @import "normalize-scss";
 @include normalize();
+@import "./mixin.scss";
+
+
+button {
+	padding: 0;
+	margin: 0;
+}
