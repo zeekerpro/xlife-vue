@@ -104,6 +104,7 @@ export default {
 		},
 		autoSlide(){
 			let direction = 'next'; 
+			clearInterval(this.autodisplayTimer);
 			this.autodisplayTimer = setInterval( () => {
 				// 计算方向
 				if (this.startShowIndex == 0) {
