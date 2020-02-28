@@ -4,12 +4,18 @@
 		<router-view>
 		</router-view>
 		<div class="slider">
-			<card-slider :items="items" :interval=2000 :showCount=1 :duration=1000 :initialIndex=3>
+			<card-slider :items="items" :interval=1000 :showCount=1 :duration=500 :initialIndex=3 :autoplay=false>
 				<template v-slot:default="{item}">
 					<div class="card">
 						{{ item.a }}
 					</div>
 				</template>
+				<template v-slot:prev-controller>
+					<div>
+						<
+					</div>
+				</template>
+					
 			</card-slider>
 		</div>
 	</div>
@@ -45,13 +51,13 @@ export default {
 
 .card {
 	height: 500px;
-	border: 1px solid #ccc;
 	padding: 100px;
-	background: red;
 	font-size: 500px;
 	font-weight: bold;
 	text-align: center;
 	line-height: 500px;
+	background: #eee;
+	border: 1px solid #ccc;
 }
 
 </style>

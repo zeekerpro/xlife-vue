@@ -4,25 +4,12 @@
 		@mouseout="startAutodisplay"
 	>
 
-	<!-- slide control button -->
-	<div 
-		@click="slide('prev')"
-		class="control prev">
-		<button class="btn-icon">
-			<fa-icon :icon="['fas', 'angle-left']" size="lg" mask="circle" fixd-width></fa-icon>
-		</button>
-	</div>
-	<div 
-		@click="slide('next')"
-		class="control next">
-		<button class="btn-icon">
-			<fa-icon :icon="['fas', 'angle-right']" size="lg" mask="circle" fixd-width></fa-icon>
-		</button>
-	</div>
-
 	<!-- slider content-->
 	<div class="slider-content" 
-		:style="{overflowX: isSliding ? 'hidden' : ''}">
+		:style="{
+			overflowX: isSliding ? 'hidden' : '',
+			width: contentWidth
+		}">
 		<!-- slide-items -->
 		<div v-for="(item, index) in items" 
 				 :style="{ 
@@ -33,6 +20,26 @@
 				 class="slide-item">
 			<slot :item="item"></slot>
 		</div>
+	</div>
+
+	<!-- slide control button -->
+	<div 
+		@click="slide('prev')"
+		class="control prev">
+		<slot name="prev-controller">
+			<button class="btn-icon">
+				<fa-icon :icon="['fas', 'angle-left']" size="lg" mask="circle" fixd-width></fa-icon>
+			</button>
+		</slot>
+	</div>
+	<div 
+		@click="slide('next')"
+		class="control next">
+		<slot name="next-controller">
+			<button class="btn-icon">
+				<fa-icon :icon="['fas', 'angle-right']" size="lg" mask="circle" fixd-width></fa-icon>
+			</button>
+		</slot>
 	</div>
 
 </div>
@@ -68,6 +75,17 @@ export default {
 		initialIndex: { // 初始状态显示item的索引
 			type: Number,
 			default: 0,
+			validator: function(value){
+				return value > 0;
+			}
+		},
+		contentWidth: { // 内容块的宽度
+			type: String,
+			default: "100%"
+		},
+		particle: {
+			type: Number,
+			default: 30,
 			validator: function(value){
 				return value > 0;
 			}
@@ -139,8 +157,9 @@ export default {
 			}, this.interval);
 		},
 		startMove: function(s){
+			let f = this.particle;
 			let t = this.duration;
-			let v = s * 30 / t;
+			let v = s * f / t;
 
 			let task = new Promise((resolve, reject) => {
 				let durationTimer = setInterval(() => {
@@ -152,7 +171,7 @@ export default {
 						clearInterval(durationTimer);
 						resolve();
 					}
-				}, 30);
+				}, f);
 			})
 			
 			return task;
@@ -181,7 +200,6 @@ export default {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		z-index: 100;
 		button {
 			border: none;
 			outline: none;
@@ -189,7 +207,6 @@ export default {
 			color: #333;
 			background: transparent;
 			opacity: 0.3;
-			cursor: pointer;
 		}
 		&.prev {
 			left: 0;
