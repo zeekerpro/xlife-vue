@@ -1,5 +1,8 @@
 <template>
-<div class="card-slider">
+<div class="card-slider"
+		@mouseover="stopAutodisplay"
+		@mouseout="startAutodisplay"
+	>
 
 	<!-- slide control button -->
 	<div 
@@ -18,7 +21,8 @@
 	</div>
 
 	<!-- slider content-->
-	<div class="slider-content" :style="{overflowX: isSliding ? 'hidden' : ''}">
+	<div class="slider-content" 
+		:style="{overflowX: isSliding ? 'hidden' : ''}">
 		<!-- slide-items -->
 		<div v-for="(item, index) in items" 
 				 :style="{ 
@@ -46,20 +50,25 @@ export default {
 			type: Number,
 			default: 3
 		},
-		interval: {
-			type: Number,
-			default: 1000 // 默认滑动间隔1s
+		autoplay: {
+			type: Boolean,
+			default: true
 		},
-		startItemIndex: {
+		interval: { // 自动播放间隔时间
 			type: Number,
-			default: 0 // 默认显示第一个item
-		}
+			default: 1000 
+		},
+		duration: { // 滑动一次持续时间
+			type: Number,
+			default: 1000
+		},
 	},
 	data(){
 		return {
 			startShowIndex: 0,
 			slidedLength: 0,
 			isSliding: false,
+			autodisplayTimer: null
 		}
 	},
 	computed: {
@@ -73,46 +82,67 @@ export default {
 			return new Array(this.items.length).fill(false).map((current, index) =>(index >= this.startShowIndex)  && (index < this.startShowIndex + this.showCount));
 		}
 	},
+	mounted: function(){
+		this.startAutodisplay();
+	},
 	methods: {
 		async slide(direction="next"){
-			// 计算滑动距离
-			let s = 0;
-			if(direction == "prev"){
-				if(this.startShowIndex > 0){
-					s = this.itemWidth;
-					this.startShowIndex -= 1;
-				}
-			}else {
-				if(this.startShowIndex < (this.items.length - this.showCount)){
-					s = - this.itemWidth;
-					this.startShowIndex += 1;
-				}
+			if(this.isSliding){
+				return;
 			}
 
 			this.isSliding = true;
-			let res = await this.startMove(s);
+			if (direction == "prev" && this.startShowIndex > 0){
+				await this.startMove( this.itemWidth);
+				this.startShowIndex -= 1;
+			}
+			if (direction == "next" && this.startShowIndex < (this.items.length - this.showCount)){
+				await this.startMove( -this.itemWidth);
+				this.startShowIndex += 1;
+			}
 			this.isSliding = false;
-			
+		},
+		autoSlide(){
+			let direction = 'next'; 
+			this.autodisplayTimer = setInterval( () => {
+				// 计算方向
+				if (this.startShowIndex == 0) {
+					direction = "next";
+				}
+				if(this.startShowIndex == this.items.length - this.showCount) {
+					direction = "prev";
+				}
+				this.slide(direction);
+			}, this.interval + this.duration);
 		},
 		startMove: function(s){
-			// 计算速度
-			let t = this.interval;
+			let t = this.duration;
 			let v = s * 30 / t;
 
 			let task = new Promise((resolve, reject) => {
-				let intervalTimer = setInterval(() => {
+				let durationTimer = setInterval(() => {
 					if(Math.abs(s) > Math.abs(v)){
 						s -= v;
 						this.slidedLength += v;
 					}else{
 						this.slidedLength += s;
-						clearInterval(intervalTimer);
+						clearInterval(durationTimer);
 						resolve();
 					}
 				}, 30);
 			})
 			
 			return task;
+		},
+		stopAutodisplay(){
+			if(this.autodisplayTimer){
+				clearInterval(this.autodisplayTimer);
+			}
+		},
+		startAutodisplay(){
+			if(this.autoplay){
+				this.autoSlide();
+			}
 		}
 	}
 }
@@ -128,7 +158,6 @@ export default {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		cursor: pointer;
 		z-index: 100;
 		button {
 			border: none;
@@ -137,6 +166,7 @@ export default {
 			color: #333;
 			background: transparent;
 			opacity: 0.3;
+			cursor: pointer;
 		}
 		&.prev {
 			left: 0;
