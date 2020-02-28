@@ -4,7 +4,7 @@
 		<router-view>
 		</router-view>
 		<div class="slider">
-			<card-slider :items="items" :interval=1000 :showCount=1>
+			<card-slider :items="items" :interval=2000 :showCount=1 :duration=1000 :initialIndex=3>
 				<template v-slot:default="{item}">
 					<div class="card">
 						{{ item.a }}

@@ -46,11 +46,14 @@ export default {
 			type: Array,
 			required: true
 		},
-		showCount: {
+		showCount: { // 显示item个数
 			type: Number,
-			default: 3
+			default: 1,
+			validator: function(value){
+				return value > 0; 
+			}
 		},
-		autoplay: {
+		autoplay: { // 是否自动播放
 			type: Boolean,
 			default: true
 		},
@@ -62,10 +65,18 @@ export default {
 			type: Number,
 			default: 1000
 		},
+		initialIndex: { // 初始状态显示item的索引
+			type: Number,
+			default: 0,
+			validator: function(value){
+				return value > 0;
+			}
+		}
 	},
 	data(){
 		return {
 			startShowIndex: 0,
+			actureShowCount: 1, // 实际显示的item数，防止用户传入参数大于世界item的数量
 			slidedLength: 0,
 			isSliding: false,
 			autodisplayTimer: null
@@ -73,14 +84,26 @@ export default {
 	},
 	computed: {
 		itemWidth: function(){
-			return 100 / this.showCount;
+			return 100 / this.actureShowCount;
 		},
 		slideableLength: function(){
-			return (this.items.length - this.showCount) * this.itemWidth;
+			return (this.items.length - this.actureShowCount) * this.itemWidth;
 		},
 		itemsVisible: function(){
-			return new Array(this.items.length).fill(false).map((current, index) =>(index >= this.startShowIndex)  && (index < this.startShowIndex + this.showCount));
+			return new Array(this.items.length).fill(false).map((current, index) =>(index >= this.startShowIndex)  && (index < this.startShowIndex + this.actureShowCount));
+		},
+		maxStartShowIndex: function(){
+			return this.items.length - this.actureShowCount;
 		}
+	},
+	created(){
+		if(this.showCount > this.items.length){
+			this.actureShowCount = this.items.length;
+		}
+		if(this.initialIndex >= 0 && this.initialIndex < this.maxStartShowIndex){
+			this.slidedLength = - this.initialIndex * this.itemWidth;
+			this.startShowIndex = this.initialIndex;
+		}	
 	},
 	mounted: function(){
 		this.startAutodisplay();
@@ -90,13 +113,12 @@ export default {
 			if(this.isSliding){
 				return;
 			}
-
 			this.isSliding = true;
 			if (direction == "prev" && this.startShowIndex > 0){
 				await this.startMove( this.itemWidth);
 				this.startShowIndex -= 1;
 			}
-			if (direction == "next" && this.startShowIndex < (this.items.length - this.showCount)){
+			if (direction == "next" && this.startShowIndex < this.maxStartShowIndex){
 				await this.startMove( -this.itemWidth);
 				this.startShowIndex += 1;
 			}
@@ -110,11 +132,11 @@ export default {
 				if (this.startShowIndex == 0) {
 					direction = "next";
 				}
-				if(this.startShowIndex == this.items.length - this.showCount) {
+				if(this.startShowIndex == this.maxStartShowIndex) {
 					direction = "prev";
 				}
 				this.slide(direction);
-			}, this.interval + this.duration);
+			}, this.interval);
 		},
 		startMove: function(s){
 			let t = this.duration;
