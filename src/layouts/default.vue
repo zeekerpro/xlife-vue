@@ -1,9 +1,11 @@
 <template>
 	<div class="container">
-		<x-header></x-header>
-		<x-sider></x-sider>
-		<router-view></router-view>
-		<x-footer></x-footer>
+		<div class="row">
+			<x-header></x-header>
+			<x-sider></x-sider>
+			<router-view></router-view>
+			<x-footer></x-footer>
+		</div>
 	</div>
 </template>
 
