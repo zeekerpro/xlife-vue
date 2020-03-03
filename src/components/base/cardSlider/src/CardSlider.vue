@@ -218,7 +218,12 @@ export default {
 	
 	.slider-content {
 		margin: 0 auto;
-		@include flex-box($justify: flex-start);
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-content: stretch;
 	}
 
 	.slide-item {

@@ -1,8 +1,9 @@
 <template>
-	<div>
-		default layout
-		<router-view>
-		</router-view>
+	<div class="container">
+		<x-header></x-header>
+		<x-sider></x-sider>
+		<router-view></router-view>
+		<x-footer></x-footer>
 	</div>
 </template>
 
@@ -12,6 +13,11 @@ export default {
 	data(){
 		return {
 		}
+	},
+	components: {
+		xHeader: () => import('@/components/core/Header'),
+		xFooter: () => import('@/components/core/Footer'),
+		xSider: () => import('@/components/core/Sider')
 	}
 }
 </script>
