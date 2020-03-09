@@ -1,6 +1,7 @@
 <template>
-	<div class="container">
+	<div class="container-md">
 		<div class="row">
+			<range-slider></range-slider>
 			<x-header></x-header>
 			<x-sider></x-sider>
 			<router-view></router-view>
