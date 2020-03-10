@@ -1,7 +1,9 @@
 <template>
 	<div class="container-md">
 		<div class="row">
-			<range-slider></range-slider>
+			<div class="range-slider">
+				<range-slider></range-slider>
+			</div>
 			<x-header></x-header>
 			<x-sider></x-sider>
 			<router-view></router-view>
@@ -26,5 +28,11 @@ export default {
 </script>
 
 <style lang="scss">
+
+
+.range-slider {
+	width: 400px;
+	height: 20px;
+}
 
 </style>
