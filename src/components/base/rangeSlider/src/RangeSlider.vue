@@ -1,7 +1,7 @@
 <template>
 	<div class="slide-box">
 		<fa-icon :icon="['fas', 'sun']" class="icon"></fa-icon>		
-		<input type="range" :min="min" :max="max" :value="value">
+		<input type="range" :min="min" :max="max" :value="value" @input="onInput">
 		<fa-icon :icon="['fas', 'moon']" class="icon"></fa-icon>		
 	</div>
 </template>
@@ -21,6 +21,11 @@ export default {
 		value: {
 			type: Number,
 			default: 20
+		}
+	},
+	methods: {
+		onInput(e){
+			this.$emit("input", e.target.value);
 		}
 	}
 }
