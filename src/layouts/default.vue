@@ -1,5 +1,5 @@
 <template>
-	<div class="container-sm">
+	<div class="container-sm bg-gradient-primary">
 		<div class="row">
 			<x-header></x-header>
 			<x-sider></x-sider>
