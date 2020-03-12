@@ -1,8 +1,6 @@
 // configuration
 
-@import "normalize-scss";
-@include normalize();
-
+@import "rfs/scss";
 @import "functions";
 @import "mixins";
 @import "variables";

@@ -82,3 +82,7 @@ $theme-colors: map-merge(
   ),
   $theme-colors
 );
+// Set a specific jump point for requesting color jumps
+$theme-color-interval:      8% !default;
+
+$text-muted:                  $gray-600 !default;

@@ -17,4 +17,5 @@ $container-max-widths: (
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
 $columns:					12 !default; 
+$row-columns: 		6 !default;
 $gutter-width:		30px !default;

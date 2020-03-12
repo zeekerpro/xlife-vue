@@ -45,7 +45,7 @@
 	margin-left: if($num == 0, 0, percentage($num));
 }
 
-@mixin make-columns($columns: $columns, $gutter: $gutter, $breakpoints: $breakpoints){
+@mixin make-columns($columns: $columns, $gutter: $gutter-width, $breakpoints: $breakpoints){
 	%column {
 		position: relative;
 		width: 100%;
@@ -70,8 +70,8 @@
 
 		@include media-breakpoint-up($breakpoint, $breakpoints){
 
-			// .row-cols-1 .row-cols-sm-1 ...
-			@for $i from 1 through $columns {
+			// .row-cols-1 .row-cols-sm-1 ... 6
+			@for $i from 1 through $row-columns {
 				.row-cols#{$infix}-#{$i}{
 					@include make-row-cols($i);
 				}
