@@ -1,12 +1,6 @@
 <template>
-	<div class="container-md"
-			 :style="{ filter: 'brightness(' + brightness + '%)'}"
-		>
+	<div class="container-sm">
 		<div class="row">
-			<div class="range-slider">
-				<range-slider v-model.number="brightness"></range-slider>
-			</div>
-			{{ brightness }}
 			<x-header></x-header>
 			<x-sider></x-sider>
 			<router-view></router-view>
@@ -39,8 +33,9 @@ export default {
 	height: 20px;
 }
 
-.container-md {
+.container-sm{
 	height: 100vh;
+	background: #eee;
 }
 
 </style>

@@ -7,6 +7,9 @@
 	@include make-container();
 }
 
+/**
+ *.container-sm 屏幕宽度大于576 使用 .container 的样式, 屏幕宽度小于576使用 .container-fluid 的样式
+ */
 @each $breakpoint, $container-max-width in $container-max-widths {
 	.container-#{$breakpoint}{
 		@extend .container-fluid;
@@ -16,11 +19,10 @@
 		%responsive-container-#{$breakpoint} {
 			max-width: $container-max-width;
 		}
-		
 		@each $name, $width in $breakpoints {
-			@if ($container-max-width > $width or $breakpoint == $name){
+			@if $container-max-width > $width or $breakpoint == $name {
 				.container#{breakpoint-infix($name, $breakpoints)}{
-					@extend %responsive-container-#{$breakpoint}
+					@extend %responsive-container-#{$breakpoint};
 				}
 			}
 		}

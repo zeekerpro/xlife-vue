@@ -20,3 +20,94 @@
 	margin-right: - $gutter / 2;
 	margin-left: - $gutter / 2;
 }
+
+@mixin make-row-cols($count){
+	& > * {
+		flex: 0 0 100% / $count;
+		max-width: 100% / $count;
+	}
+}
+
+@mixin make-col-auto(){
+	flex: 0 0 auto;
+	width: auto;
+	max-width: 100%;
+}
+
+@mixin make-col($size, $columns: $columns){
+	flex: 0 0 percentage($size / $columns);
+	width: auto;
+	max-width: percentage($size / $columns);
+}
+
+@mixin make-col-offset($size, $columns: $columns){
+	$num: $size / $columns;
+	margin-left: if($num == 0, 0, percentage($num));
+}
+
+@mixin make-columns($columns: $columns, $gutter: $gutter, $breakpoints: $breakpoints){
+	%column {
+		position: relative;
+		width: 100%;
+		padding-right: $gutter / 2;
+		padding-left: $gutter / 2;
+	}
+
+	@each $breakpoint in map-keys($breakpoints){
+		$infix: breakpoint-infix($breakpoint, $breakpoints);
+
+		// col col-auto col-sm col-sm-auto
+		.col#{$infix}, .col#{$infix}-auto {
+			@extend %column;
+		}
+
+		// col-sm-1 ... 12
+		@for $i from 1 through $columns {
+			.col#{$infix}-#{$i}{
+				@extend %column;
+			}
+		}
+
+		@include media-breakpoint-up($breakpoint, $breakpoints){
+
+			// .row-cols-1 .row-cols-sm-1 ...
+			@for $i from 1 through $columns {
+				.row-cols#{$infix}-#{$i}{
+					@include make-row-cols($i);
+				}
+			}
+
+			.col#{infix} {
+				flex-basis: 0;
+				flex-grow: 1;
+				max-width: 100%;
+			}
+
+			.col#{$infix}-auto {
+				@include make-col-auto();
+			}
+
+			@for $i from 1 through $columns {
+				.col#{$infix}-#{$i} {
+					@include make-col($i, $columns);
+				}
+			}
+
+			// .order
+			.order#{$infix}-first {order: -1;}
+			.order#{$infix}-last {order: $columns + 1;}
+			@for $i from 0 through $columns {
+				.order#{$infix}-#{i}{order: $i;}
+			}
+
+			// offset
+			@for $i from 0 through ($columns - 1) {
+				@if not ($infix == "" and $i == 0){
+					.offset#{$infix}-#{$i}{
+						@include make-col-offset($i, $columns);
+					}
+				}
+			}
+		}
+	}
+}
