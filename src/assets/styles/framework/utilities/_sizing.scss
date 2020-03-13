@@ -1,0 +1,28 @@
+// stylelint-disable declaration-no-important
+//
+// width and height
+
+
+@each $size, $length in $sizes {
+	@each $prop, $abbrev in (height: h, width: w, top: t, bottom: b, left: l, right: r) {
+		.#{$abbrev}-#{$size}{
+			#{$prop}: $length !important; 
+		}
+	}
+}
+
+.mw-100 {
+	max-width: 100% !important;
+}
+
+.mh-100 {
+	max-height: 100% !important;
+}
+
+.min-vh-100 {
+	min-height: 100vh !important;
+}
+
+.min-vw-100 {
+	min-width: 100vw !important;
+}

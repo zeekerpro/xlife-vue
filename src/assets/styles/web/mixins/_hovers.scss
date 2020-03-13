@@ -1,0 +1,34 @@
+@mixin hover-underline($color: $primary, $height: $underline-height){
+	@extend .position-relative;
+
+	&:before, &:after {
+		content: "";
+		@extend .d-block;
+		@extend .position-absolute;
+		@include rfs($height, height);
+		bottom: 0;
+	}
+
+	&:before {
+		width: 0;
+		left: 0;
+		background-color: $color;
+	}
+	&:after {
+		width: 0;
+		right: 0;
+		@include transition($underline-transition);
+		background-color: $color;
+	}
+	@include hover(){
+		&::before{
+			width: 100%;
+			@include transition($underline-transition);
+		}
+		&::after{
+			width: 100%;
+			@extend .bg-transparent;
+		}
+	}
+
+}

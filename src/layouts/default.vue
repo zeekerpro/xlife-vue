@@ -1,10 +1,15 @@
 <template>
-	<div class="container-sm bg-gradient-primary">
+	<div class="container-sm">
 		<div class="row">
 			<x-header></x-header>
 			<x-sider></x-sider>
 			<router-view></router-view>
 			<x-footer></x-footer>
+
+			<div class="nav-link">
+				<a href="/">click</a>
+			</div>
+
 		</div>
 	</div>
 </template>

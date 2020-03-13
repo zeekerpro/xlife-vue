@@ -1,14 +1,3 @@
-// configuration
-
 @import "rfs/scss";
-@import "functions";
-@import "mixins";
-@import "variables";
-@import "setup";
-
-// Utilities
-@import "utilities";
-
-
-// Layout 
-@import "layout";
+@import "framework/index";
+@import "web/index";

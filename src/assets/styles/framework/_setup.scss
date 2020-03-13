@@ -1,3 +1,5 @@
+// 参照normalize.css 初始化设置
+
 // Document
 //
 // 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
@@ -37,6 +39,10 @@ body {
 
 // https://www.zhangxinxu.com/wordpress/2019/03/css-focus-visible/
 [tabindex="-1"]:focus:not(:focus-visible){
+	outline: none !important;
+}
+
+:focus:not(:focus-visible){
 	outline: none !important;
 }
 
