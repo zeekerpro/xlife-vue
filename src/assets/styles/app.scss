@@ -1,3 +1,11 @@
 @import "rfs/scss";
+
+@import "variables";
+
 @import "framework/index";
-@import "web/index";
+
+@import "web/mixins/index";
+
+@import "web/utilities/index";
+
+@import "web/components/index";

@@ -2,6 +2,7 @@ module.exports = {
 	lintOnSave: false, 
 	publicPath: "/",
 	css: {
+		extract: true,
 		loaderOptions: {
 			scss: {
 				prependData: `

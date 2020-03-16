@@ -1,0 +1,58 @@
+// color
+$primary:  #15363e;
+
+// selection-background
+$selection-background-color: rgb(131, 148, 150) !important;
+
+// Spacing
+$spacer: 1rem !default;
+$spacers: (
+	6: ($spacer * 6),
+	7: ($spacer * 12)
+) !default;
+
+// Sizing
+$sizes: (
+	0: 0,
+	5: 5%,
+	10: 10%
+) !default;
+
+// Links
+$link-color:                              lighten($primary, 30%);
+$link-hover-decoration:                   none !default;
+
+// app
+$app-background-image: url("/images/svg/space-background.svg");
+$app-background-color: darken($primary, 5%);
+
+// underline
+$underline-height: 1px;
+$underline-transition: width .3s ease;
+
+// Sidebar
+$sidebar-background-color: darken($primary, 6%);
+$sidebar-width: 56px;
+$sidebar-hover-width: 260px;
+$sidebar-transition: width 0.2s ease 0s, opacity 0.8s ease 0s, box-shadow 0.1s linear 0.1s, background-color 0.3s ease 0s;
+
+// Header
+$header-height: 33px;
+$header-background-color: rgb(0, 59, 74); 
+$header-border-bottom: 1px solid rgb(0, 43, 54);
+
+// Footer
+$footer-height: 60px;
+
+// Banner 
+$banner-height: 100px;
+$banner-background-color: rgb(0, 59, 74);
+$banner-border-bottom: 1px solid rgb(0, 43, 54);
+
+// MAIN-CONTENT
+$main-content-background-color: rgb(7, 45, 58);
+$main-content-width: 95%;
+$main-content-margin-top: 25px;
+$main-content-margin-left: 40px;
+$main-content-min-height: calc(100% - #{$header-height} - #{$banner-height} - #{$footer-height} - #{$main-content-margin-top});
+

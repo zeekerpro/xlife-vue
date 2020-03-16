@@ -1,6 +1,5 @@
 <template>
-	<footer>
-		footer
+	<footer id="APP-FOOTER">
 	</footer>
 </template>
 

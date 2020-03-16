@@ -1,10 +1,10 @@
 <template>
-	<aside id="APP-SIDEBAR">
-	</aside>
+	<nav id="APP-BANNER">
+	</nav>
 </template>
 
 <script>
 export default {
-	name: "Sider"
+	name: "Banner"
 }
 </script>

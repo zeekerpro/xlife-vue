@@ -3,7 +3,8 @@ $breakpoints: (
 	sm: 576px,
 	md: 768px,
 	lg: 992px,
-	xl: 1200px
+	xl: 1200px,
+	xxl: 1540
 ) !default;
 @include _assert-ascending($breakpoints, "$breakpoints");
 @include _assert-starts-at-zero($breakpoints, "$breakpoints");
@@ -12,7 +13,8 @@ $container-max-widths: (
 	sm: 540px,
 	md: 720px,
 	lg: 960px,
-	xl: 1140px
+	xl: 1140px,
+	xxl: 1440
 ) !default;
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
@@ -50,9 +52,6 @@ $sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $sizes: map-merge(
   (
-		0: 0,
-		5:  5%,
-		10: 10%,
 		15: 15%,
     25: 25%,
     50: 50%,
