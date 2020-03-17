@@ -1,4 +1,4 @@
-@mixin hover-underline($color: $primary, $height: $underline-height){
+@mixin hover-underline($color: $link-hover-color, $height: $underline-height){
 	@extend .position-relative;
 
 	&:before, &:after {

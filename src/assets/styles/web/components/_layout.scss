@@ -16,6 +16,7 @@
 	@include transition($sidebar-transition);
 	width: $sidebar-width;
 	background-color: $sidebar-background-color;
+	border: $sidebar-border;
 	@include hover(){
 		@include merge_class(w-10, shadow-lg);
 		width: $sidebar-hover-width;
@@ -23,7 +24,7 @@
 }
 
 #APP-HEADER {
-	@include merge_class(justify-content-center, px-6, shadow);
+	@include merge_class(flex, justify-content-center, px-5, shadow);
 	height: $header-height;
 	background-color: $header-background-color;
 	border-bottom: $header-border-bottom;
@@ -31,6 +32,7 @@
 
 #APP-FOOTER {
 	height: $footer-height;
+	background-color: $footer-background-color;
 }
 
 #APP-BANNER {
@@ -40,9 +42,9 @@
 }
 
 #APP-MAIN-CONTENT {
+	@include merge_class(ml-5, mr-3);
 	background-color: $main-content-background-color;
-	width: $main-content-width;
-	min-height: $main-content-min-height;
 	margin-top: $main-content-margin-top;
-	margin-left: $main-content-margin-left;
+	margin-bottom: $main-content-margin-bottom;
+	min-height: $main-content-min-height;
 }

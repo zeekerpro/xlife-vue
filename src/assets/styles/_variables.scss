@@ -1,5 +1,10 @@
 // color
 $primary:  #15363e;
+$light: rgb(45, 126, 177);
+
+
+// font-family
+$font-family-orbitron:  Orbitron, cursive, Helvetica;
 
 // selection-background
 $selection-background-color: rgb(131, 148, 150) !important;
@@ -19,7 +24,8 @@ $sizes: (
 ) !default;
 
 // Links
-$link-color:                              lighten($primary, 30%);
+$link-color:                              rgb(47, 120, 138);
+$link-hover-color:	                      lighten($primary, 60%);
 $link-hover-decoration:                   none !default;
 
 // app
@@ -35,24 +41,31 @@ $sidebar-background-color: darken($primary, 6%);
 $sidebar-width: 56px;
 $sidebar-hover-width: 260px;
 $sidebar-transition: width 0.2s ease 0s, opacity 0.8s ease 0s, box-shadow 0.1s linear 0.1s, background-color 0.3s ease 0s;
+$sidebar-border: 1px solid rgb(20, 54, 62);
 
-// Header
+
+//================= Header
 $header-height: 33px;
 $header-background-color: rgb(0, 59, 74); 
 $header-border-bottom: 1px solid rgb(0, 43, 54);
 
+$main-entry-dot-color: $link-color;
+$main-entry-dot-radius: 2px;
+//================= Header end
+
+
 // Footer
-$footer-height: 60px;
+$footer-height: 20px;
+$footer-background-color: rgb(7, 45, 58);
 
 // Banner 
 $banner-height: 100px;
 $banner-background-color: rgb(0, 59, 74);
 $banner-border-bottom: 1px solid rgb(0, 43, 54);
 
-// MAIN-CONTENT
+// =================== MAIN-CONTENT
 $main-content-background-color: rgb(7, 45, 58);
-$main-content-width: 95%;
-$main-content-margin-top: 25px;
-$main-content-margin-left: 40px;
-$main-content-min-height: calc(100% - #{$header-height} - #{$banner-height} - #{$footer-height} - #{$main-content-margin-top});
-
+$main-content-margin-bottom: 30px;
+$main-content-margin-top: 20px;
+$main-content-min-height: calc(100% - #{$header-height} - #{$banner-height} - #{$footer-height} - #{$main-content-margin-top} - #{$main-content-margin-bottom});
+// =================== MAIN-CONTENT end
