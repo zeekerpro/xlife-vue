@@ -23,10 +23,10 @@
 		</div>
 		<div class="header-operations flex-grow-0 flex align-items-center">
 			<div class="header-search mr-3">
-				<iconfont name="xsearch" class="header-icon light"></iconfont>
+				<iconfont name="xsearch" class="header-icon"></iconfont>
 			</div>
 			<div class="account-wrapper">
-				<iconfont name="xuser" class="header-icon light"></iconfont>
+				<iconfont name="xuser" class="header-icon"></iconfont>
 			</div>
 		</div>
 	</header>

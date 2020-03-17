@@ -21,7 +21,9 @@
 
 .header-icon {
 	@include font-size($font-size-lg);
+	color: $light;
 	@include hover(){
 		cursor: pointer;
+		color: lighten($light, 16%);
 	}
 }
