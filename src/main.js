@@ -5,6 +5,7 @@ import store from "./store";
 import "@/plugins/base";
 import "@/plugins/fontawesome";
 import "@/plugins/iconfont";
+import "@/plugins/svg";
 import "@/assets/styles/app.scss";
 
 Vue.config.productionTip = false;

@@ -21,12 +21,12 @@
 		</div>
 		<div class="header-addons flex-grow-0">
 		</div>
-		<div class="header-operations flex-grow-0 flex align-items-center">
+		<div class="header-operations flex-grow-0 flex align-items-center mx-3">
 			<div class="header-search mr-3">
-				<iconfont name="xsearch" class="header-icon"></iconfont>
+				<iconfont name="xsearch" class="header-icon font-md"></iconfont>
 			</div>
 			<div class="account-wrapper">
-				<iconfont name="xuser" class="header-icon"></iconfont>
+				<iconfont name="xuser" class="header-icon font-md"></iconfont>
 			</div>
 		</div>
 	</header>

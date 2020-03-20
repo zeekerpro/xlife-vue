@@ -6,6 +6,90 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4075973",
+      "name": "电子技术",
+      "font_class": "dianzijishu",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "8642380",
+      "name": "MONEY MAKING",
+      "font_class": "money-making",
+      "unicode": "e832",
+      "unicode_decimal": 59442
+    },
+    {
+      "icon_id": "10031173",
+      "name": "ins",
+      "font_class": "ins",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "13424945",
+      "name": "照片",
+      "font_class": "zhaopian",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "13508928",
+      "name": "box",
+      "font_class": "box",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "13508929",
+      "name": "document",
+      "font_class": "document",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "13508930",
+      "name": "radar",
+      "font_class": "radar",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "13508931",
+      "name": "build",
+      "font_class": "build",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "13508932",
+      "name": "maps",
+      "font_class": "maps",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "13508935",
+      "name": "share",
+      "font_class": "share",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "13508936",
+      "name": "socket",
+      "font_class": "socket",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "13508760",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
       "icon_id": "13506986",
       "name": "publish_pen",
       "font_class": "publish_pen",
