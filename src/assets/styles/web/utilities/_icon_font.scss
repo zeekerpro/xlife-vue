@@ -1,5 +1,5 @@
 // make icon size : icon-xs sm md lg
-// make font-size : font-xs smd md lg
+// make font-size : font-xs sm md lg
 
 @each $name, $value in $font-sizes {
 	.icon-#{$name} {

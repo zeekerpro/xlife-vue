@@ -88,6 +88,13 @@ $banner-height: 125px;
 $banner-background-color: rgb(0, 59, 74);
 $banner-border-bottom: 1px solid rgb(0, 43, 54);
 $banner-vertical-hr-height: 40px;
+$banner-section-content-hover-animation: 0.4s linear 0s 1 normal none running scale-fill-out;
+$banner-section-content-hover-color: rgb(44, 180, 170);
+$banner-tab-width: 80px;
+$banner-tab-gap: 32px;
+$banner-tab-text-color: $light;
+$banner-tab-ink-bar-height: 2px;
+$banner-tab-ink-bar-transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 // ===================== Banner  end
 
 // =================== MAIN-CONTENT

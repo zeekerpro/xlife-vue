@@ -2,5 +2,28 @@
 	.vertical-hr {
 		height: $banner-vertical-hr-height; 
 	}
+	.section-content > * {
+		@include hover(){
+			animation: $banner-section-content-hover-animation; 
+			color:     $banner-section-content-hover-color;
+		}
+	}
+	.banner-tabs {
+		.tab {
+			width: $banner-tab-width;
+			margin-right: $banner-tab-gap;
+			color: $banner-tab-text-color;
+			@include hover-focus(){
+				cursor: pointer;
+				color:     lighten($banner-tab-text-color, 10%);
+			}
+		}
+		.tab-ink-bar {
+			height: $banner-tab-ink-bar-height;
+			width: $banner-tab-width;
+			background-color: lighten($banner-tab-text-color, 10%);
+			transition: $banner-tab-ink-bar-transition;
+		}
+	}
 }
 

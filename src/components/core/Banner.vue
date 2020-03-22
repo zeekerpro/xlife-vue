@@ -1,6 +1,6 @@
 <template>
-	<nav id="APP-BANNER">
-		<div class="banner-content px-5 py-2 flex align-items-center">
+	<nav id="APP-BANNER" class="px-5 position-relative">
+		<div class="banner-content py-2 flex align-items-center">
 			<div class="banner-logo mr-2">
 				<svg-icon :name="bannerLogo" class="icon-xxl"></svg-icon>
 			</div>
@@ -23,7 +23,20 @@
 				</div>
 			</div>
 		</div>
-		<div class="banner-tabs"></div>
+		<div class="banner-tabs flex align-items-start position-absolute b-0 pb-2">
+			<a href="#" 
+				class="tab text-center font-bs" 
+				v-for="(tab, index) in tabs" 
+				:key="'banner-tab-' + tab.id"
+				@click="activateTab(index)"
+				>
+				<iconfont :name="tab.icon" class="tab-icon mr-1"></iconfont>
+				<span class="tab-name">{{ tab.name }}</span>
+			</a>
+			<div class="tab-ink-bar position-absolute b-0"
+					 :style="tabInkBarStyle"
+				></div>
+		</div>
 	</nav>
 </template>
 
@@ -123,7 +136,20 @@ export default {
 						hash: ""
 					}
 				},
-			]
+			],
+			activeTabIndex: 0
+		}
+	},
+	methods: {
+		activateTab: function(tabIndex){
+			this.activeTabIndex = tabIndex;
+		},
+	},
+	computed: {
+		tabInkBarStyle: function() {
+			return {
+				transform: "translateX(" + 112 * this.activeTabIndex + "px)"
+			}
 		}
 	}
 }

@@ -1,5 +1,5 @@
 <template>
-	<i :class="['iconfont', name]"></i>
+	<i :class="['iconfont', name, $attrs.class]"></i>
 </template>
 
 <script>
