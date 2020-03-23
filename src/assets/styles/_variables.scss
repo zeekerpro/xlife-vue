@@ -68,6 +68,7 @@ $sidebar-width: 56px;
 $sidebar-hover-width: 260px;
 $sidebar-transition: width 0.2s ease 0s, opacity 0.8s ease 0s, box-shadow 0.1s linear 0.1s, background-color 0.3s ease 0s;
 $sidebar-border-right: 1px solid rgb(20, 54, 62);
+$sidebar-z-index: 100;
 
 //================= Header
 $header-height: 33px;
