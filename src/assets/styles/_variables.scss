@@ -100,7 +100,7 @@ $banner-tab-ink-bar-transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355,
 
 // =================== MAIN-CONTENT
 $main-content-background-color: rgb(7, 45, 58); 
-$main-content-margin-bottom: 30px;
+$main-content-margin-bottom: 10px;
 $main-content-margin-top: 20px;
 $main-content-min-height: calc(100% - #{$header-height} - #{$banner-height} - #{$footer-height} - #{$main-content-margin-top} - #{$main-content-margin-bottom});
 $main-content-border-radius: 6px;
