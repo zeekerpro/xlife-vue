@@ -1,6 +1,6 @@
 <template>
-	<div v-show="isShow">
-		<div id="APP-VIEWER" class="position-fixed h-100 w-75 r-0 t-0 d-flex" >
+	<div v-show="isShow" class="viewer-wrapper">
+		<div id="APP-VIEWER" class="position-absolute h-100 w-75 r-0 t-0 d-flex" >
 			<div class="add-on w-10 d-flex flex-column align-items-end">
 				<div class="close-btn-wrapper position-relative"
 						 @click="hideViewer"
