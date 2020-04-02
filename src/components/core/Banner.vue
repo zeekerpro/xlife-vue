@@ -1,6 +1,6 @@
 <template>
 	<nav id="APP-BANNER" class="px-5 position-relative">
-		<div class="banner-content py-2 flex align-items-center">
+		<div class="banner-content py-2 d-flex align-items-center">
 			<div class="banner-logo mr-2">
 				<svg-icon :name="bannerLogo" class="icon-xxl"></svg-icon>
 			</div>
@@ -8,12 +8,12 @@
 				<h4 class="light">{{bannerTitle}}</h4>
 				<span class="light-green">{{bannerDesc}}</span>
 			</div>
-			<div class="banner-sections flex align-items-center justify-content-around light-green text-center">
-				<div class="banner-section flex" 
+			<div class="banner-sections d-flex align-items-center justify-content-around light-green text-center">
+				<div class="banner-section d-flex" 
 					v-for="(section, index) in bannerSections" 
 					:key="'banner-section-' + section.id" >
 
-					<div class="section-content flex flex-column justifu-content-center px-2">
+					<div class="section-content d-flex flex-column justifu-content-center px-2">
 						<h6 class="section-key font-sm my-0">{{section.key}}</h6>
 						<span class="text-center font-lg">{{section.value}}</span>
 					</div>
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="banner-tabs flex align-items-start position-absolute b-0 pb-2">
+		<div class="banner-tabs d-flex align-items-start position-absolute b-0 pb-2">
 			<a href="#" 
 				class="tab text-center font-bs" 
 				v-for="(tab, index) in tabs" 

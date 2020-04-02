@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "13869243",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "13645654",
+      "name": "content_filter",
+      "font_class": "content_filter",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
       "icon_id": "4075973",
       "name": "电子技术",
       "font_class": "dianzijishu",

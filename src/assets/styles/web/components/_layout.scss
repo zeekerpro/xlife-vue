@@ -25,7 +25,7 @@
 }
 
 #APP-HEADER {
-	@include merge_class(flex, justify-content-center, px-5, shadow);
+	@include merge_class(d-flex, justify-content-center, px-5, shadow);
 	height: $header-height;
 	background-color: $header-background-color;
 	border-bottom: $header-border-bottom;
@@ -49,4 +49,11 @@
 	margin-bottom: $main-content-margin-bottom;
 	min-height: $main-content-min-height;
 	border-radius: $main-content-border-radius;
+}
+
+// 右侧滑动显示内容区域
+#APP-VIEWER {
+	z-index: $zindex-fixed;
+	max-width: $viewer-max-width;
+	transition: $viewer-transition;
 }

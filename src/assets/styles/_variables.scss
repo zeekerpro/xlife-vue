@@ -3,12 +3,15 @@ $primary:  #15363e;
 $light: rgb(45, 126, 177);
 $light-green: rgb(47, 120, 138);
 
+
 $theme-colors: (
 	"primary": $primary,
 	"light": $light,
 	"light-green": $light-green
 ) !default;
 
+
+$body-color: rgb(123, 143, 144); 
 
 // font-family
 $font-family-orbitron:  Orbitron, cursive, Helvetica;
@@ -105,3 +108,15 @@ $main-content-margin-top: 20px;
 $main-content-min-height: calc(100% - #{$header-height} - #{$banner-height} - #{$footer-height} - #{$main-content-margin-top} - #{$main-content-margin-bottom});
 $main-content-border-radius: 6px;
 // =================== MAIN-CONTENT end
+
+// =================== sign panel
+$sign-panel-max-width: 550px;
+$sign-panel-background-color: rgb(0, 38, 48);
+$sign-panel-border: 1px solid rgb(0, 62, 79);
+$sign-input-height: 58px;
+// =================== sign panel end
+
+// =================== VIEWER
+$viewer-max-width: 1000px;
+$viewer-transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+// =================== VIEWER END

@@ -1,7 +1,7 @@
 <template>
 	<div>
-		login page
-		<button @click="signin">sigin in</button>
+			login page
+			<button @click="signin">sigin in</button>
 	</div>
 </template>
 

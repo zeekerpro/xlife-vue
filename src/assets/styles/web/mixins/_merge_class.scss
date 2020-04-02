@@ -1,4 +1,4 @@
-@mixin merge-class($classes...){
+@mixin merge_class($classes...){
 	@each $class in $classes {
 		@extend .#{$class};
 	}

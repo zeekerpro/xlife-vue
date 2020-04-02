@@ -1,7 +1,12 @@
 export default {
 	path: 'signin',
 	name: 'signin',
-	component: () => {
-		return import(/* webpackChunkName: "user" */"@/views/user/Signin");
-	}
+	components: {
+		default: () => {
+			return import(/* webpackChunkName: "user" */"@/views/user/Signin");
+		},
+		viewer: () => {
+			return import(/* webpackChunkName: "user" */"@/views/user/Signin");
+		}
+	} 
 }

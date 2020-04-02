@@ -7,7 +7,7 @@
 .main-entries{
 	@include merge_class(mx-2, row);
 	.main-entry{
-		@include merge_class(flex, align-items-center, ml-2);
+		@include merge_class(d-flex, align-items-center, ml-2);
 	}
 	.main-entry-link {
 		@include font-size($font-size-sm);

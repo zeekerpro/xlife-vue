@@ -10,6 +10,9 @@
 				</div>
 				<x-footer></x-footer>
 			</div>
+			<x-viewer>
+				<router-view name="viewer"></router-view>
+			</x-viewer>
 		</div>
 	</div>
 </template>
@@ -26,7 +29,8 @@ export default {
 		xHeader: () => import('@/components/core/Header'),
 		xBanner: () => import('@/components/core/Banner'),
 		xFooter: () => import('@/components/core/Footer'),
-		xSider: () => import('@/components/core/Sider')
+		xSider: () => import('@/components/core/Sider'),
+		xViewer: () => import('@/components/core/Viewer'),
 	}
 }
 </script>

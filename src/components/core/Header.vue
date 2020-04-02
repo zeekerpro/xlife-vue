@@ -1,6 +1,6 @@
 <template>
 	<header id="APP-HEADER">
-		<div class="header-routes flex-grow-1 flex align-items-center">
+		<div class="header-routes flex-grow-1 d-flex align-items-center">
 			<img :src="logo.url" alt="" class="h-75">
 			<a href="" class="logo-text ">{{ logo.text }}</a>
 			<div class="nav-link main-entries">
@@ -21,7 +21,7 @@
 		</div>
 		<div class="header-addons flex-grow-0">
 		</div>
-		<div class="header-operations flex-grow-0 flex align-items-center mx-3">
+		<div class="header-operations flex-grow-0 d-flex align-items-center mx-3">
 			<div class="header-search mr-3">
 				<iconfont name="xsearch" class="header-icon font-md"></iconfont>
 			</div>

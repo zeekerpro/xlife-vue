@@ -1,5 +1,7 @@
 <template>
-<div class="overlayer" v-show="isShow"></div>
+<div :class="['overlayer']" v-show="isShow">
+	<slot></slot>
+</div>
 </template>
 
 <script>
@@ -14,7 +16,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .overlayer {
 	@include merge_class(fixed-top, fixed-bottom,overflow-auto);
 }
