@@ -1,4 +1,5 @@
 import Token from '@/utils/Token';
+import userService from "@/services/userService" 
  
 const state = {
 	token: Token.get(),
@@ -16,14 +17,15 @@ const mutations = {
 
 const actions = {
 	// 登录
-	login: async (context, userInfo) => {
+	signin: async (context, userInfo) => {
 		// 1. send request
-		// 2. set token
-		// Token.set(token);
+		let ret = await userService.signin(userInfo);
+		console.log(ret);
+		return ret;
 	},
 
 	// 退出登录
-	logout: async ({commit}, userInfo) => {
+	signout: async ({commit}, userInfo) => {
 		/* todo
 		let ret = await userService.logout(userInfo);
 		*/
@@ -37,7 +39,7 @@ const getters = {
 }
 
 export default {
-	namespace: true,
+	namespaced: true,
 	state,
 	mutations,
 	actions,

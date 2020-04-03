@@ -23,14 +23,14 @@ import { mapState, mapMutations } from 'vuex'
 export default {
 	name: "XViewer",
 	computed: {
-		...mapState({
+		...mapState('layout', {
 			isShow: (state) => {
-				return state.layout.isShowViewer;
+				return state.isShowViewer;
 			}
 		})
 	},
 	methods: {
-		...mapMutations([
+		...mapMutations('layout',[
 			'hideViewer'
 		])
 	}

@@ -10,10 +10,6 @@ $breakpoints: (
 @include _assert-starts-at-zero($breakpoints, "$breakpoints");
 
 $container-max-widths: (
-	sm: 540px,
-	md: 720px,
-	lg: 960px,
-	xl: 1140px,
 	xxl: 1440px
 ) !default;
 @include _assert-ascending($container-max-widths, "$container-max-widths");

@@ -1,5 +1,5 @@
 @each $color-name, $color-value in $theme-colors {
 	.#{$color-name} {
-		color: $color-value;
+		color: $color-value !important;
 	}
 }

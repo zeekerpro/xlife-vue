@@ -6,6 +6,7 @@ import "@/plugins/base";
 import "@/plugins/fontawesome";
 import "@/plugins/iconfont";
 import "@/plugins/svg";
+import "@/plugins/vuetify";
 import "@/assets/styles/app.scss";
 
 Vue.config.productionTip = false;
