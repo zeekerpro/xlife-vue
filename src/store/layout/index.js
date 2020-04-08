@@ -1,10 +1,9 @@
 /**
- *
  * 右侧内容窗口显示控制
  *
  */
 const state = {
-	isShowViewer: true
+	isShowViewer: false
 }
 
 const mutations = {

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions} from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 
 export default {
 	name: "signin",
@@ -71,6 +71,9 @@ export default {
 		...mapActions('user', [
 			'signin'
 		]),
+		...mapMutations('layout',[
+			'hideViewer'
+		]),
 		async submit(){
 			if(!this.valid) return;
 			let data = {
@@ -80,11 +83,17 @@ export default {
 				}
 			};
 			let ret = await this.signin(data);
-			console.log(ret);
 			if(ret && ret.status == 401){
 				this.errors.push("认证失败，用户名或密码错误");
 			}
 			if(ret && ret.status == 200){
+				// 登录成功
+				this.hideViewer();
+				this.$toast({
+					text: "登录成功",
+					duration: 2000,
+					mode: 'primary'
+				})
 			}
 		},
 		validate(){

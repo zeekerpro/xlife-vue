@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuetify, {
 	VForm,
-	VTextField
+	VTextField,
+	VSnackbar
 } from 'vuetify/lib';
 
 import { Ripple } from 'vuetify/lib/directives';
@@ -9,7 +10,8 @@ import { Ripple } from 'vuetify/lib/directives';
 Vue.use(Vuetify, {
   components: {
 		VForm,
-		VTextField
+		VTextField,
+		VSnackbar
   },
   directives: {
     Ripple,

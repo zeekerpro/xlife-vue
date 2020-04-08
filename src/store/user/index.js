@@ -1,5 +1,7 @@
 import Token from '@/utils/Token';
-import userService from "@/services/userService" 
+import UserService from "@/services/userService" 
+
+const userService = new UserService();
  
 const state = {
 	token: Token.get(),
@@ -20,7 +22,6 @@ const actions = {
 	signin: async (context, userInfo) => {
 		// 1. send request
 		let ret = await userService.signin(userInfo);
-		console.log(ret);
 		return ret;
 	},
 

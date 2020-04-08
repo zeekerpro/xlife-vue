@@ -25,7 +25,7 @@
 			<div class="header-search mr-3">
 				<iconfont name="xsearch" class="header-icon font-md"></iconfont>
 			</div>
-			<div class="account-wrapper">
+			<div class="account-wrapper" @click="showViewer">
 				<iconfont name="xuser" class="header-icon font-md"></iconfont>
 			</div>
 		</div>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapActions, mapMutations } from 'vuex'
 export default {
 	name: "Header",
 	data(){
@@ -64,6 +65,11 @@ export default {
 				}
 			]
 		}
+	},
+	methods: {
+		...mapMutations('layout',[
+			'showViewer'
+		]),
 	}
 }
 </script>

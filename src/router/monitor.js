@@ -9,7 +9,6 @@ import NProgress from "nprogress";
 export function monitor(router){
 
 	router.beforeEach((to, from ,next) => {
-		console.log(`from ${from.path} to ${to.path}`);
 		if(to.path != from.path){
 			NProgress.start();	
 		}

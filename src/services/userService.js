@@ -1,27 +1,35 @@
-import request from '@/network/http';
+import AbstractService from './AbstractService.js';
 
-let userService = {
-	signin: (user) => {
-		return request({
+class UserService extends AbstractService {
+
+	async signin(user){
+		let ret = await this.send({
 			url: '/signin',
 			method: 'POST',
 			data: user
 		});
-	},
-	signout: (user) => {
-		return request({
+
+		return ret;
+	}
+
+	async signout(user){
+		let ret = this.send({
 			url: '/signout',
 			method: 'POST',
 			data: user
-		})
-	},
-	register: (user) => {
-		return request({
-			url: 'register',
+		});
+		return ret;
+	}
+
+	async register(user){
+		let ret = this.send({
+			url: '/register',
 			method: 'POST',
 			data: user
-		})
+		});
+		return ret;
 	}
+	
 }
 
-export default userService
+export default UserService;
