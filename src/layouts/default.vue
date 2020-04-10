@@ -6,7 +6,7 @@
 				<x-header></x-header>
 				<x-banner></x-banner>
 				<div id="APP-MAIN-CONTENT">
-					<router-view></router-view>
+					<router-view v-if="isRouterAlive"></router-view>
 				</div>
 				<x-footer></x-footer>
 			</div>
@@ -22,9 +22,14 @@ import {mapState} from 'vuex';
 
 export default {
 	name: "DefaultLayout",
+	provide () {
+    return {
+      reload: this.reload
+    }
+  },
 	data(){
 		return {
-			brightness: 60
+			isRouterAlive: true
 		}
 	},
 	components: {
@@ -42,6 +47,12 @@ export default {
 		})
 	},
 	methods: {
+		reload () {
+      this.isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRouterAlive = true
+      })
+    }
 	}
 }
 </script>

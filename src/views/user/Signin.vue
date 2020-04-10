@@ -46,6 +46,7 @@ import { mapActions, mapMutations } from 'vuex'
 
 export default {
 	name: "signin",
+	inject: ['reload'],
 	data(){
 		return {
 			lazy: false,
@@ -90,7 +91,8 @@ export default {
 			if(ret && ret.status == 200){
 				// 登录成功
 				this.hideViewer();
-				this.$router.go(0); // 刷新页面
+				// 刷新页面 
+				this.reload();
 				this.$toast({
 					text: "登录成功",
 					duration: 2000,

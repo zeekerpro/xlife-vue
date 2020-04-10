@@ -24,7 +24,6 @@ export default {
 		// get all users
 		let userList = await userService.users();
 		this.users = userList;
-		console.log(this.users);
 	},
 	methods: {
 	}
