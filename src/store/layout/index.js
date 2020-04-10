@@ -3,16 +3,18 @@
  *
  */
 const state = {
-	isShowViewer: false
+	isShowViewer: false,
+	viewerComponent: null
 }
 
 const mutations = {
-	showViewer(state, args){
+	showViewer(state, viewerComponentPath){
 		state.isShowViewer = true;
+		state.viewerComponent = viewerComponentPath;
 	},
 	hideViewer(state, args){
 		state.isShowViewer = false;
-	}
+	},
 }
 
 export default {

@@ -62,7 +62,7 @@ export default {
 				],
 				password: [
 					v => !!v || 'Password is required!',
-					v => (v && v.length >= 6) || "Password must be less than 6 characters"
+					v => (v && v.length >= 6) || "Password must be more than 6 characters"
 				]
 			}
 		}
@@ -72,7 +72,8 @@ export default {
 			'signin'
 		]),
 		...mapMutations('layout',[
-			'hideViewer'
+			'hideViewer',
+			'showViewer'
 		]),
 		async submit(){
 			if(!this.valid) return;
@@ -84,16 +85,17 @@ export default {
 			};
 			let ret = await this.signin(data);
 			if(ret && ret.status == 401){
-				this.errors.push("认证失败，用户名或密码错误");
+				this.errors.push("认证失败");
 			}
 			if(ret && ret.status == 200){
 				// 登录成功
 				this.hideViewer();
+				this.$router.go(0); // 刷新页面
 				this.$toast({
 					text: "登录成功",
 					duration: 2000,
 					mode: 'primary'
-				})
+				});
 			}
 		},
 		validate(){

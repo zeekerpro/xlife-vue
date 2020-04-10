@@ -6,6 +6,7 @@ import SearchPanel from "@/components/base/searchPanel";
 import SvgIcon from "@/components/base/svg";
 import Overlayer from "@/components/base/overlayer";
 import Toast from "@/components/base/toast";
+import AsyncComponent from "@/components/base/asyncComponent";
 
 Vue.use(CardSlider);
 Vue.use(RangeSlider);
@@ -14,3 +15,4 @@ Vue.use(SearchPanel);
 Vue.use(SvgIcon);
 Vue.use(Overlayer);
 Vue.use(Toast);
+Vue.use(AsyncComponent);

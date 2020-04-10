@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Vuetify, {
 	VForm,
 	VTextField,
-	VSnackbar
+	VSnackbar,
+	VList
 } from 'vuetify/lib';
 
 import { Ripple } from 'vuetify/lib/directives';
@@ -11,13 +12,23 @@ Vue.use(Vuetify, {
   components: {
 		VForm,
 		VTextField,
-		VSnackbar
+		VSnackbar,
+		VList
   },
   directives: {
     Ripple,
   },
 })
 
-const opts = {}
 
-export default new Vuetify(opts)
+const opts = {
+	theme: {
+    dark: true
+  }
+}
+
+export default new Vuetify({
+  theme: {
+    dark: true,
+  },
+})

@@ -3,7 +3,8 @@
  * */
 
 import axios from 'axios';
-import Token from '@/utils/Token'
+import Token from '@/utils/Token';
+import store from '@/store';
 
 // 1. create axios instance
 const httpService = axios.create({
@@ -19,17 +20,27 @@ httpService.interceptors.request.use( config => {
 	config.headers["Authorization"] = auth_token;
 	return config;
 }, error => {
-	console.log(error);
+	return Promise.reject(error);
 });
 
 // 3. response inspactor
 httpService.interceptors.response.use( response => {
-	// 存储服务器端发布的token
+	// 存储服务器端发布的token，每次请求会自动更新
 	let authToken = response.headers.authorization;
 	Token.set(authToken);
 	return response;
 }, error => {
-	return error.response;
+	let response = error.response;
+	if(response){
+		switch(response.status){
+			case 401: 
+				// 显示登录窗口
+				store.commit('layout/showViewer', 'views/user/Signin');
+				break;
+		}
+	}
+
+	return Promise.reject(error);
 });
 
 export default httpService;

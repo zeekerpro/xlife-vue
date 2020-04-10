@@ -3,5 +3,10 @@
 		user profile page
 	</div>
 </template>
-<script></script>
+
+<script>
+export default {
+	name: "UserProfile"
+}
+</script>
 <style></style>

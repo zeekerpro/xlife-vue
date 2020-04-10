@@ -25,7 +25,7 @@
 			<div class="header-search mr-3">
 				<iconfont name="xsearch" class="header-icon font-md"></iconfont>
 			</div>
-			<div class="account-wrapper" @click="showViewer">
+			<div class="account-wrapper" @click="displayViewerPanel">
 				<iconfont name="xuser" class="header-icon font-md"></iconfont>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex'
+import { mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
 	name: "Header",
 	data(){
@@ -66,10 +66,20 @@ export default {
 			]
 		}
 	},
+	computed: {
+		...mapGetters('user', [
+			'isSigned',
+			'userInfo'
+		])
+	},
 	methods: {
 		...mapMutations('layout',[
 			'showViewer'
 		]),
+		displayViewerPanel(){
+			let viewerComponentPath = this.isSigned ? 'views/user/Profile' : 'views/user/Signin';
+			this.showViewer(viewerComponentPath);
+		}
 	}
 }
 </script>

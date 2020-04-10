@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import user from './user';
 import layout from './layout';
+import routes from './routes';
 
 Vue.use(Vuex);
 
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
   actions: {},
   modules: {
 		user,
-		layout
+		layout,
+		routes
 	}
 });
 

@@ -17,6 +17,7 @@ const mutations = {
 	}
 }
 
+
 const actions = {
 	// 登录
 	signin: async (context, userInfo) => {
@@ -36,7 +37,8 @@ const actions = {
 }
 
 const getters = {
-	userInfo: (state) => state.userInfo
+	userInfo: (state) => state.userInfo,
+	isSigned: (state) => !!state.token
 }
 
 export default {

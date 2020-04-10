@@ -11,13 +11,15 @@
 				<x-footer></x-footer>
 			</div>
 			<x-viewer>
-				<router-view name="viewer"></router-view>
+				<async-component :path="viewerComponent"></async-component>
 			</x-viewer>
 		</div>
 	</div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
+
 export default {
 	name: "DefaultLayout",
 	data(){
@@ -31,6 +33,15 @@ export default {
 		xFooter: () => import('@/components/core/Footer'),
 		xSider: () => import('@/components/core/Sider'),
 		xViewer: () => import('@/components/core/Viewer'),
+	},
+	computed: {
+		...mapState('layout', {
+			viewerComponent: (state) => {
+				return state.viewerComponent;
+			}
+		})
+	},
+	methods: {
 	}
 }
 </script>
