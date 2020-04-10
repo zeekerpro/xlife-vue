@@ -10,7 +10,7 @@ export default {
 	data(){
 		return {
 			text: "",
-			show: false,
+			show: true,
 			fade: true,
 			mode: "primary"
 		}

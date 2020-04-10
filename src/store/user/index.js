@@ -10,7 +10,13 @@ const state = {
 
 const mutations = {
 	setToken: (state, token) => {
-		state.token = token;
+		if(!token){
+			Token.remove();	
+			state.token = null;
+		}else{
+			state.token = token;
+			Token.set(token);
+		}
 	},
 	setUserInfo: (state, userInfo) => {
 		state.userInfo = userInfo;
@@ -19,21 +25,6 @@ const mutations = {
 
 
 const actions = {
-	// 登录
-	signin: async (context, userInfo) => {
-		// 1. send request
-		let ret = await userService.signin(userInfo);
-		return ret;
-	},
-
-	// 退出登录
-	signout: async ({commit}, userInfo) => {
-		/* todo
-		let ret = await userService.logout(userInfo);
-		*/
-		commit('setToken', null);
-		Token.remove();
-	}
 }
 
 const getters = {

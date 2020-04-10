@@ -1,4 +1,6 @@
 import AbstractService from './AbstractService.js';
+import store from '@/store';
+import Token from '@/utils/Token';
 
 class UserService extends AbstractService {
 
@@ -20,7 +22,6 @@ class UserService extends AbstractService {
 			method: 'POST',
 			data: user
 		});
-
 		return ret;
 	}
 
@@ -30,6 +31,8 @@ class UserService extends AbstractService {
 			method: 'POST',
 			data: user
 		});
+		store.commit('user/setToken', null);
+		location.reload();
 		return ret;
 	}
 

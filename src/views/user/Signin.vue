@@ -44,6 +44,9 @@
 <script>
 import { mapActions, mapMutations } from 'vuex'
 
+import UserService from '@/services/userService';
+let userService = new UserService();
+
 export default {
 	name: "signin",
 	inject: ['reload'],
@@ -69,9 +72,6 @@ export default {
 		}
 	},
 	methods: {
-		...mapActions('user', [
-			'signin'
-		]),
 		...mapMutations('layout',[
 			'hideViewer',
 			'showViewer'
@@ -84,7 +84,7 @@ export default {
 					password: this.model.password
 				}
 			};
-			let ret = await this.signin(data);
+			let ret = await userService.signin(data);
 			if(ret && ret.status == 401){
 				this.errors.push("认证失败");
 			}

@@ -27,7 +27,7 @@ httpService.interceptors.request.use( config => {
 httpService.interceptors.response.use( response => {
 	// 存储服务器端发布的token，每次请求会自动更新
 	let authToken = response.headers.authorization;
-	Token.set(authToken);
+	store.commit('user/setToken', authToken);
 	return response;
 }, error => {
 	let response = error.response;
