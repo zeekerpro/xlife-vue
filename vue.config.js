@@ -9,6 +9,7 @@ let svgImgs =  resolve("src/assets/svg/imgs");
 module.exports = {
 	lintOnSave: false, 
 	publicPath: "/",
+	runtimeCompiler: true,
 	css: {
 		extract: true,
 		loaderOptions: {

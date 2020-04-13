@@ -1,5 +1,6 @@
 <template>
-	<div id="SIGNIN" class="d-flex align-items-center justify-content-center w-100 h-100">
+	<div id="SIGNIN" class="d-flex flex-column align-items-center justify-content-center w-100 h-100">
+		<h3> 登录</h3>
 		<v-form 
 			 ref="signinForm"
 			 :lazy-validation="lazy"
@@ -38,14 +39,16 @@
 				</template>
 			</v-text-field>
 		</v-form>
+		<div class="w-50 text-right light">
+			<button @click="toSignup">没有账号 -></button>
+		</div>
 	</div>
 </template>
 
 <script>
 import { mapActions, mapMutations } from 'vuex'
-
-import UserService from '@/services/userService';
-let userService = new UserService();
+import userService from '@/services/userService';
+import * as HttpStatusCodes from '@/utils/HttpStatusCodes';
 
 export default {
 	name: "signin",
@@ -76,7 +79,8 @@ export default {
 			'hideViewer',
 			'showViewer'
 		]),
-		async submit(){
+		async submit(event){
+			event.target.blur();
 			if(!this.valid) return;
 			let data = {
 				user: {
@@ -85,20 +89,25 @@ export default {
 				}
 			};
 			let ret = await userService.signin(data);
-			if(ret && ret.status == 401){
-				this.errors.push("认证失败");
+			switch (ret.status) {
+				case HttpStatusCodes.OK: 
+					// 登录成功
+					this.hideViewer();
+					// 刷新页面 
+					this.reload();
+					this.$toast({
+						text: "登录成功",
+						duration: 2000,
+						mode: 'primary'
+					});
+					break;
+				case HttpStatusCodes.UNAUTHORIZED:
+					this.errors.push("认证失败");
+					break;
 			}
-			if(ret && ret.status == 200){
-				// 登录成功
-				this.hideViewer();
-				// 刷新页面 
-				this.reload();
-				this.$toast({
-					text: "登录成功",
-					duration: 2000,
-					mode: 'primary'
-				});
-			}
+		},
+		toSignup(){
+			this.showViewer('views/user/Signup');
 		},
 		validate(){
 			this.$refs.signinForm.validate();

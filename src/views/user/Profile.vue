@@ -6,8 +6,7 @@
 </template>
 
 <script>
-import UserService from '@/services/userService';
-let userService = new UserService();
+import userService from '@/services/userService';
 
 export default {
 	name: "UserProfile",

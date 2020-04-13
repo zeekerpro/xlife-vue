@@ -1,7 +1,4 @@
 import Token from '@/utils/Token';
-import UserService from "@/services/userService" 
-
-const userService = new UserService();
  
 const state = {
 	token: Token.get(),

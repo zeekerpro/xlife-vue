@@ -30,17 +30,17 @@ httpService.interceptors.response.use( response => {
 	store.commit('user/setToken', authToken);
 	return response;
 }, error => {
-	let response = error.response;
-	if(response){
-		switch(response.status){
-			case 401: 
-				// 显示登录窗口
-				store.commit('layout/showViewer', 'views/user/Signin');
-				break;
-		}
-	}
-
-	return Promise.reject(error);
+	return responseErrorHandler(error);
 });
+
+function responseErrorHandler(error){
+	let response = error.response;
+	switch(response.status){
+		case 401:
+			store.commit('layout/showViewer', 'views/user/Signin');
+			break;
+	}
+	return Promise.reject(error);
+}
 
 export default httpService;

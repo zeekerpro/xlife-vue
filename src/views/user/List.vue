@@ -8,10 +8,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex';
-import UserService from '@/services/userService';
-
-let userService = new UserService();
+import userService from '@/services/userService';
 
 export default {
 	name: "UserList",

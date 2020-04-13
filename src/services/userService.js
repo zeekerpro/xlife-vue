@@ -1,27 +1,35 @@
 import AbstractService from './AbstractService.js';
 import store from '@/store';
 import Token from '@/utils/Token';
+import * as HttpStatusCodes from '@/utils/HttpStatusCodes';
 
 class UserService extends AbstractService {
 
 	async users(){
 		let data = null;
-		let ret = await this.send({
-			url: '/users',
-			method: 'GET'
-		});
-		if(ret.status === 200){
-			data = ret.data;
-		}
+		try {
+			let ret = await this.send({
+				url: '/users',
+				method: 'GET'
+			});
+			if(ret.status === HttpStatusCodes.OK){
+				data = ret.data;
+			}
+		} catch(error){}finally {} 
 		return data;
 	}
 
 	async signin(user){
-		let ret = await this.send({
-			url: '/signin',
-			method: 'POST',
-			data: user
-		});
+		let ret = null;
+		try {
+			ret = await this.send({
+				url: '/signin',
+				method: 'POST',
+				data: user
+			});
+		} catch(error){
+			ret = error.response;
+		}
 		return ret;
 	}
 
@@ -36,15 +44,20 @@ class UserService extends AbstractService {
 		return ret;
 	}
 
-	async register(user){
-		let ret = this.send({
-			url: '/register',
-			method: 'POST',
-			data: user
-		});
+	async signup(user){
+		let ret = null;
+		try {
+			ret = await this.send({
+				url: '/signup',
+				method: 'POST',
+				data: user
+			});
+		}catch(error){
+			ret = error.response;
+		}
 		return ret;
 	}
 	
 }
 
-export default UserService;
+export default new UserService();
