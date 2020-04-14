@@ -1,6 +1,9 @@
 <template>
-	<div v-show="isShow" class="viewer-wrapper">
-		<div id="APP-VIEWER" class="position-absolute h-100 w-75 r-0 t-0 d-flex" >
+	<transition name="slideRight">
+		<div id="APP-VIEWER" 
+			v-show="isShow"
+			:class="isShow ? 'r-0' : 'l-100'"
+			class="position-absolute h-100 w-75 t-0 d-flex" >
 			<div class="add-on w-10 d-flex flex-column align-items-end">
 				<div class="close-btn-wrapper position-relative"
 						 @click="hideViewer"
@@ -14,7 +17,7 @@
 				<slot></slot>
 			</div>
 		</div>
-	</div>
+	</transition>
 </template>
 
 <script>

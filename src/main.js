@@ -8,6 +8,7 @@ import "@/plugins/iconfont";
 import "@/plugins/svg";
 import "@/plugins/vuetify";
 import "@/assets/styles/app.scss";
+import 'vue2-animate/dist/vue2-animate.min.css';
 
 Vue.config.productionTip = false;
 
