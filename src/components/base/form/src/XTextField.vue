@@ -1,6 +1,7 @@
 <template>
 		<x-input :messages="messages">
-			<template v-slot:prepend> <slot name="prepend"></slot> </template>
+
+			<template v-slot:prepend> <slot name="prepend" v-if="$slots.prepend"></slot> </template>
 
 			<template v-slot:default>
 
@@ -13,7 +14,14 @@
 					>
 					<label for="" class="x-label position-absolute t-0 r-auto" 
 						v-if="label">{{label}}</label>
-					<input :type="type" class="w-100" @focus="onfocus" @blur="onblur" v-focus="autofocus">
+					<input :type="type" 
+						class="w-100" 
+						@focus="onfocus" 
+						@blur="onblur" 
+						v-focus="autofocus" 
+						:value="value"
+						@input="onInput"
+						>
 				</div>
 
 				<div class="x-input-append-inner" v-if="$slots.appendInner">
@@ -21,7 +29,8 @@
 				</div>
 			</template>
 
-			<template v-slot:append> <slot name="append"></slot> </template>
+			<template v-slot:append> <slot name="append" v-if="$slots.append"></slot> </template>
+
 		</x-input>
 </template>
 
@@ -46,6 +55,10 @@ export default {
 		type: {
 			type: String,
 			default: 'text'
+		},
+		value: {
+			type: String,
+			default: ''
 		}
 	},
 	components: {
@@ -62,6 +75,10 @@ export default {
 		},
 		onblur(){
 			this.isActive = false;
+		},
+		onInput(e){
+			console.log(e.target.value);
+			this.$emit('input', e.target.value);
 		}
 	}
 }

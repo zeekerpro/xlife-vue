@@ -5,6 +5,7 @@
 			<x-text-field
 				label="Account" 
 				:autofocus="true"
+				v-model="model.username"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">

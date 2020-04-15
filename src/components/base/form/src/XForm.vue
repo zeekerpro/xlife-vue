@@ -1,7 +1,7 @@
 <template>
-	<from class="v-form">
+	<form class="v-form" onsubmit="return false">
 		<slot></slot>
-	</from>
+	</form>
 </template>
 
 <script>
