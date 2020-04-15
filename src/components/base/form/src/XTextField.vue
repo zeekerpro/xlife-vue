@@ -13,7 +13,7 @@
 					>
 					<label for="" class="x-label position-absolute t-0 r-auto" 
 						v-if="label">{{label}}</label>
-					<input type="text" class="w-100" @focus="onfocus" @blur="onblur" v-focus="autofocus">
+					<input :type="type" class="w-100" @focus="onfocus" @blur="onblur" v-focus="autofocus">
 				</div>
 
 				<div class="x-input-append-inner" v-if="$slots.appendInner">
@@ -42,6 +42,10 @@ export default {
 		autofocus: {
 			type: Boolean,
 			default: false
+		},
+		type: {
+			type: String,
+			default: 'text'
 		}
 	},
 	components: {
