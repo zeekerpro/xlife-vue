@@ -7,6 +7,7 @@ import SvgIcon from "@/components/base/svg";
 import Overlayer from "@/components/base/overlayer";
 import Toast from "@/components/base/toast";
 import AsyncComponent from "@/components/base/asyncComponent";
+import {XTextField} from "@/components/base/form";
 
 Vue.use(CardSlider);
 Vue.use(RangeSlider);
@@ -16,3 +17,4 @@ Vue.use(SvgIcon);
 Vue.use(Overlayer);
 Vue.use(Toast);
 Vue.use(AsyncComponent);
+Vue.use(XTextField);

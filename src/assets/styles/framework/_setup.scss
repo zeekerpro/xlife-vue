@@ -42,7 +42,7 @@ body {
 	outline: none !important;
 }
 
-:focus:not(:focus-visible){
+*:focus:not(:focus-visible){
 	outline: none !important;
 }
 

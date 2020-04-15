@@ -1,6 +1,18 @@
 <template>
 	<div id="SIGNIN" class="d-flex flex-column align-items-center justify-content-center w-100 h-100">
 		<h3> 登录</h3>
+		<x-form class="w-50">
+			<x-text-field
+				label="Account" 
+				:autofocus="true"
+				>
+				<template v-slot:prepend>
+					<div class="prepend-icon">
+						<svg-icon name="xlogin" class="icon-lg"></svg-icon>
+					</div>
+				</template>
+			</x-text-field>
+		</x-form>
 		<v-form 
 			 ref="signinForm"
 			 :lazy-validation="lazy"
@@ -12,7 +24,6 @@
 				:rules="rules.username"
 				:required="true"
 				hint="username"
-				:autofocus="true"
 				class="font-lg"
 				:error-messages="errors"
 				>
@@ -42,6 +53,7 @@
 		<div class="w-50 text-right light">
 			<button @click="toSignup">没有账号 -></button>
 		</div>
+
 	</div>
 </template>
 

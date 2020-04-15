@@ -55,5 +55,11 @@
 #APP-VIEWER {
 	z-index: $zindex-fixed;
 	max-width: $viewer-max-width;
-	//transition: $viewer-transition;
+	transition: $viewer-transition;
+	&.show {
+		transform: translateX(0);
+	}
+	&.hide {
+		transform: translateX(100%);
+	}
 }

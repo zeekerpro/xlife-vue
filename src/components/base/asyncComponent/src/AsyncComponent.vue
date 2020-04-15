@@ -1,13 +1,13 @@
 <template>
   <keep-alive v-if="keepAlive">
     <component
-      :is="AsyncComponent"
+      :is="TargetComponent"
       v-bind="$attrs"
       v-on="$listeners"/>
   </keep-alive>
   <component
     v-else
-    :is="AsyncComponent"
+    :is="TargetComponent"
     v-bind="$attrs"
     v-on="$listeners"/>
 </template>
@@ -48,7 +48,7 @@ export default {
 		}
 	},
 	computed: {
-		AsyncComponent(){
+		TargetComponent(){
 			if(this.path){
 				return factory(this.path, this.delay, this.timeout);
 			}

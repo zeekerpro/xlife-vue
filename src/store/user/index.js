@@ -21,8 +21,7 @@ const mutations = {
 }
 
 
-const actions = {
-}
+const actions = {}
 
 const getters = {
 	userInfo: (state) => state.userInfo,

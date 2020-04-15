@@ -12,9 +12,7 @@ class UserService extends AbstractService {
 				url: '/users',
 				method: 'GET'
 			});
-			if(ret.status === HttpStatusCodes.OK){
-				data = ret.data;
-			}
+			data = ret.data;
 		} catch(error){}finally {} 
 		return data;
 	}
@@ -27,6 +25,7 @@ class UserService extends AbstractService {
 				method: 'POST',
 				data: user
 			});
+			store.commit('user/setUserInfo', ret.data);
 		} catch(error){
 			ret = error.response;
 		}
@@ -52,10 +51,24 @@ class UserService extends AbstractService {
 				method: 'POST',
 				data: user
 			});
+			store.commit('user/setUserInfo', ret.data);
 		}catch(error){
 			ret = error.response;
 		}
 		return ret;
+	}
+
+	/**
+	 * 初始化用户登录状态
+	 */
+	async initSignState(){
+		try {
+			let ret = await this.send({
+				url: '/users/current',
+				method: 'POST'
+			});
+			store.commit('user/setUserInfo', ret.data);
+		}catch(error){}
 	}
 	
 }

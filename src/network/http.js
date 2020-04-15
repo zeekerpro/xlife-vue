@@ -37,6 +37,7 @@ function responseErrorHandler(error){
 	let response = error.response;
 	switch(response.status){
 		case 401:
+			store.commit('user/setToken', null);
 			store.commit('layout/showViewer', 'views/user/Signin');
 			break;
 	}
