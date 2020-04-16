@@ -6,7 +6,6 @@ import "@/plugins/base";
 import "@/plugins/fontawesome";
 import "@/plugins/iconfont";
 import "@/plugins/svg";
-import "@/plugins/vuetify";
 import "@/plugins/directives";
 import "@/assets/styles/app.scss";
 import 'vue2-animate/dist/vue2-animate.min.css';

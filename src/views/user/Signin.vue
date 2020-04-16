@@ -6,6 +6,7 @@
 				label="Account" 
 				:autofocus="true"
 				v-model="model.username"
+				class="font-lg"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -13,46 +14,21 @@
 					</div>
 				</template>
 			</x-text-field>
-		</x-form>
-		<v-form 
-			 ref="signinForm"
-			 :lazy-validation="lazy"
-			 v-model="valid"
-			 class="w-50"
-			>
-			<v-text-field
-				v-model="model.username"
-				:rules="rules.username"
-				:required="true"
-				hint="username"
-				class="font-lg"
-				:error-messages="errors"
-				>
-				<template v-slot:prepend>
-					<div class="prepend-icon mr-4">
-						<svg-icon name="xlogin" class="icon-lg"></svg-icon>
-					</div>
-				</template>
-			</v-text-field>
-			<v-text-field
+			<x-text-field
+				label="Password" 
 				v-model="model.password"
-				:rules="rules.password"
-				:required="true"
-				type="password"
-				hint="password"
-			  v-on:keyup.enter="submit"
 				class="font-lg"
-				:error-messages="errors"
+			  v-on:keyup.enter.native="submit"
 				>
 				<template v-slot:prepend>
-					<div class="prepend-icon mr-4">
+					<div class="prepend-icon">
 						<svg-icon name="xkey" class="icon-lg"></svg-icon>
 					</div>
 				</template>
-			</v-text-field>
-		</v-form>
+			</x-text-field>
+		</x-form>
 		<div class="w-50 text-right light">
-			<button @click="toSignup">没有账号 -></button>
+			<button class="bg-transparent" @click="toSignup">没有账号 -></button>
 		</div>
 
 	</div>
@@ -68,9 +44,6 @@ export default {
 	inject: ['reload'],
 	data(){
 		return {
-			lazy: false,
-			valid: false,
-			errors:[],
 			model: {
 				username: "",
 				password: ""
@@ -94,7 +67,6 @@ export default {
 		]),
 		async submit(event){
 			event.target.blur();
-			if(!this.valid) return;
 			let data = {
 				user: {
 					account: this.model.username,
@@ -115,22 +87,12 @@ export default {
 					});
 					break;
 				case HttpStatusCodes.UNAUTHORIZED:
-					this.errors.push("认证失败");
 					break;
 			}
 		},
 		toSignup(){
 			this.showViewer('views/user/Signup');
 		},
-		validate(){
-			this.$refs.signinForm.validate();
-		},
-		reset(){
-			this.$refs.signinForm.reset();
-		},
-		resetValidation(){
-			this.$refs.signinForm.resetValidation();
-		}
 	}
 }
 

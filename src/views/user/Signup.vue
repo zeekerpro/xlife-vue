@@ -1,73 +1,63 @@
 <template>
 	<div id="SIGNIN" class="d-flex flex-column align-items-center justify-content-center w-100 h-100">
 		<h3> 注册 </h3>
-		<v-form 
+		<x-form 
 			 ref="signupForm"
-			 :lazy-validation="lazy"
-			 v-model="valid"
 			 class="w-50"
 			>
-			<v-text-field
+			<x-text-field
 				v-model="model.username"
+				label="Username" 
 				:rules="rules.username"
-				:required="true"
-				hint="username"
-				:autofocus="true"
 				class="font-lg"
-				:error-messages="errors.username"
+				:autofocus="true"
 				>
 				<template v-slot:prepend>
-					<div class="prepend-icon mr-4">
+					<div class="prepend-icon">
 						<svg-icon name="xlogin" class="icon-lg"></svg-icon>
 					</div>
 				</template>
-			</v-text-field>
-			<v-text-field
+			</x-text-field>
+			<x-text-field
 				v-model="model.email"
 				:rules="rules.email"
-				:required="true"
-				hint="email"
 				class="font-lg"
-				:error-messages="errors.email"
+				label="Email" 
 				>
 				<template v-slot:prepend>
-					<div class="prepend-icon mr-4">
+					<div class="prepend-icon">
 						<svg-icon name="xemail" class="icon-lg"></svg-icon>
 					</div>
 				</template>
-			</v-text-field>
-			<v-text-field
+			</x-text-field>
+			<x-text-field
 				v-model="model.password"
 				:rules="rules.password"
 				:required="true"
-				type="password"
-				hint="password"
 				class="font-lg"
-				:error-messages="errors.password"
+				label="Password"
 				>
 				<template v-slot:prepend>
-					<div class="prepend-icon mr-4">
+					<div class="prepend-icon">
 						<svg-icon name="xkey" class="icon-lg"></svg-icon>
 					</div>
 				</template>
-			</v-text-field>
-			<v-text-field
+			</x-text-field>
+			<x-text-field
 				v-model="model.repassword"
 				:rules="rules.repassword"
-				:required="true"
 				type="password"
-				hint="repeat password"
 			  v-on:keyup.enter="submit"
 				class="font-lg"
-				:error-messages="errors.repassword"
+				label="Password Confirmation"
 				>
 				<template v-slot:prepend>
-					<div class="prepend-icon mr-4">
+					<div class="prepend-icon">
 						<svg-icon name="xkey" class="icon-lg"></svg-icon>
 					</div>
 				</template>
-			</v-text-field>
-		</v-form>
+			</x-text-field>
+		</x-form>
 		<div class="w-50 text-right light">
 			<button @click="toSignin">已有账号-> </button>
 		</div>
@@ -84,14 +74,6 @@ export default {
 	inject: ['reload'],
 	data(){
 		return {
-			lazy: false,
-			valid: false,
-			errors: {
-				username: [],
-				email: [],
-				password: [],
-				repassword: []
-			},
 			model: {
 				username: "",
 				email: "",
@@ -123,7 +105,6 @@ export default {
 		]),
 		async submit(event){
 			event.target.blur();
-			if(!this.valid) return;
 			let data = {
 				user: {
 					name: this.model.username,
@@ -145,25 +126,18 @@ export default {
 					break;
 				case HttpStatusCodes.CONFLICT: // 该用户名/邮箱已经被注册
 					let data = ret.data;
+					/*
 					this.errors.username = data.name;
 					this.errors.email = data.email;
 					this.errors.password = data.password;
 					this.errors.repassword = data.password;
+					*/
 					break;
 			}
 		},
 		toSignin(){
 			this.showViewer('views/user/Signin');
 		},
-		validate(){
-			this.$refs.signupForm.validate();
-		},
-		reset(){
-			this.$refs.signupForm.reset();
-		},
-		resetValidation(){
-			this.$refs.signupForm.resetValidation();
-		}
 	}
 }
 

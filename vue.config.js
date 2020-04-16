@@ -15,6 +15,8 @@ module.exports = {
 		loaderOptions: {
 			scss: {
 				prependData: `
+					@import "@/assets/styles/preset.scss";
+					@import "@/assets/styles/framework/index.scss";
 					@import "@/assets/styles/app.scss";
 				`
 			}
