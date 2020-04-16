@@ -28,7 +28,7 @@
 			</x-text-field>
 		</x-form>
 		<div class="w-50 text-right light">
-			<button class="bg-transparent" @click="toSignup">没有账号 -></button>
+			<button class="btn-link bg-transparent border-0" @click="toSignup">没有账号 -></button>
 		</div>
 
 	</div>

@@ -59,7 +59,7 @@
 			</x-text-field>
 		</x-form>
 		<div class="w-50 text-right light">
-			<button @click="toSignin">已有账号-> </button>
+			<button class="btn-link bg-transparent border-0" @click="toSignin">已有账号-> </button>
 		</div>
 	</div>
 </template>
