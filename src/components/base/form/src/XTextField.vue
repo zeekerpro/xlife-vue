@@ -1,7 +1,7 @@
 <template>
 		<x-input :messages="messages">
 
-			<template v-slot:prepend> <slot name="prepend" v-if="$slots.prepend"></slot> </template>
+			<template v-slot:prepend v-if="$slots.prepend"> <slot name="prepend"></slot> </template>
 
 			<template v-slot:default>
 				<div class="x-input-prepend-inner" v-if="$slots.prependInner">
@@ -28,7 +28,7 @@
 				</div>
 			</template>
 
-			<template v-slot:append> <slot name="append" v-if="$slots.append"></slot> </template>
+			<template v-slot:append v-if="$slots.append"> <slot name="append"></slot> </template>
 
 		</x-input>
 </template>
@@ -58,6 +58,14 @@ export default {
 		value: {
 			type: String,
 			default: ''
+		},
+		required: {
+			type: Boolean,
+			default: false
+		},
+		rules: {
+			type: Array,
+			default: []
 		}
 	},
 	components: {
@@ -81,7 +89,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

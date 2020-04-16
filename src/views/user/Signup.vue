@@ -9,7 +9,7 @@
 				v-model="model.username"
 				label="Username" 
 				:rules="rules.username"
-				class="font-lg"
+				class="font-md"
 				:autofocus="true"
 				>
 				<template v-slot:prepend>
@@ -21,7 +21,7 @@
 			<x-text-field
 				v-model="model.email"
 				:rules="rules.email"
-				class="font-lg"
+				class="font-md"
 				label="Email" 
 				>
 				<template v-slot:prepend>
@@ -34,7 +34,7 @@
 				v-model="model.password"
 				:rules="rules.password"
 				:required="true"
-				class="font-lg"
+				class="font-md"
 				label="Password"
 				>
 				<template v-slot:prepend>
@@ -48,7 +48,7 @@
 				:rules="rules.repassword"
 				type="password"
 			  v-on:keyup.enter="submit"
-				class="font-lg"
+				class="font-md"
 				label="Password Confirmation"
 				>
 				<template v-slot:prepend>

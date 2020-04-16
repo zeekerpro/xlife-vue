@@ -6,7 +6,7 @@
 				label="Account" 
 				:autofocus="true"
 				v-model="model.username"
-				class="font-lg"
+				class="font-md"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -17,7 +17,7 @@
 			<x-text-field
 				label="Password" 
 				v-model="model.password"
-				class="font-lg"
+				class="font-md"
 			  v-on:keyup.enter.native="submit"
 				>
 				<template v-slot:prepend>
