@@ -8,6 +8,7 @@ import Overlayer from "@/components/base/overlayer";
 import Toast from "@/components/base/toast";
 import AsyncComponent from "@/components/base/asyncComponent";
 import {XTextField, XForm} from "@/components/base/form";
+import Validator from "@/components/base/validator";
 
 Vue.use(CardSlider);
 Vue.use(RangeSlider);
@@ -19,3 +20,4 @@ Vue.use(Toast);
 Vue.use(AsyncComponent);
 Vue.use(XTextField);
 Vue.use(XForm);
+Vue.use(Validator);

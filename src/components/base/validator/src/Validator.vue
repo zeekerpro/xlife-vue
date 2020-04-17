@@ -1,15 +1,17 @@
+<template>
+<ValidationProvider v-if="$slots.default">
+	<slot></slot>
+</ValidationProvider>
+</template>
+
+<script>
+
 import { ValidationProvider, extend} from 'vee-validate';
 import * as presetRules from 'vee-validate/dist/rules';
 import { messages } from 'vee-validate/dist/locale/zh_CN.json';
 
-Object.keys(presetRules).forEach(rule => {
-	extend(rule, {
-    ...presetRules[rule], // copies rule configuration
-    message: messages[rule] // assign message
-  });
-});
-
-const ValidateAddon = {
+export default {
+	name: "Validator",
 	props: {
 		rules: {
 			type: Array,
@@ -26,6 +28,14 @@ const ValidateAddon = {
 	},
 	components: {
 		ValidationProvider
+	},
+	created(){
+		Object.keys(presetRules).forEach(rule => {
+			extend(rule, {
+				...presetRules[rule], // copies rule configuration
+				message: messages[rule] // assign message
+			});
+		});
 	},
 	data(){
 		return {
@@ -52,4 +62,4 @@ const ValidateAddon = {
 	}
 }
 
-export default ValidateAddon;
+</script>

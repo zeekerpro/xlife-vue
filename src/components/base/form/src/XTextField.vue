@@ -11,7 +11,7 @@
 					<div class="x-text-field flex-fill"
 							:class="isActive ? 'active' : ''"
 						>
-						<ValidationProvider v-slot="{ errors }" :rules="validRules" class="flex-fill" ref="validator" :name="label">
+						<Validator v-slot="{ errors }" :rules="rules" class="flex-fill" ref="validator" :name="label">
 							<label for="" class="x-label position-absolute t-0 r-auto" 
 								v-if="label">{{label}}</label>
 							<input :type="type" 
@@ -23,7 +23,7 @@
 								@input="onInput"
 								:placeholder="placeholder"
 								>
-						</ValidationProvider>
+						</Validator>
 					</div>
 
 				<div class="x-input-append-inner" v-if="$slots.appendInner">
@@ -37,8 +37,6 @@
 </template>
 
 <script>
-import ValidateAddon from "@/mixins/validate";
-
 export default {
 	name: "XTextField",
 	props: {
@@ -58,12 +56,17 @@ export default {
 			type: String,
 			default: 'text'
 		},
+		rules: {
+			type: Array,
+			default: () => {
+				return [];
+			}
+		},
 		value: {
 			type: String,
 			default: ''
 		},
 	},
-	mixins: [ValidateAddon],
 	components: {
 		XInput: () => import('./XInput')
 	},
