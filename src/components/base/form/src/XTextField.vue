@@ -8,20 +8,23 @@
 					<slot name="prependInner" ></slot>
 				</div>
 
-				<div class="x-text-field flex-fill"
-						:class="isActive ? 'active' : ''"
-					>
-					<label for="" class="x-label position-absolute t-0 r-auto" 
-						v-if="label">{{label}}</label>
-					<input :type="type" 
-						class="w-100" 
-						@focus="onfocus" 
-						@blur="onblur" 
-						v-focus="autofocus" 
-						:value="value"
-						@input="onInput"
+					<div class="x-text-field flex-fill"
+							:class="isActive ? 'active' : ''"
 						>
-				</div>
+						<ValidationProvider v-slot="{ errors }" :rules="validRules" class="flex-fill" ref="validator" :name="label">
+							<label for="" class="x-label position-absolute t-0 r-auto" 
+								v-if="label">{{label}}</label>
+							<input :type="type" 
+								class="w-100" 
+								@focus="onfocus" 
+								@blur="onblur" 
+								v-focus="autofocus" 
+								:value="value"
+								@input="onInput"
+								:placeholder="placeholder"
+								>
+						</ValidationProvider>
+					</div>
 
 				<div class="x-input-append-inner" v-if="$slots.appendInner">
 					<slot name="appendInner" ></slot>
@@ -34,6 +37,8 @@
 </template>
 
 <script>
+import ValidateAddon from "@/mixins/validate";
+
 export default {
 	name: "XTextField",
 	props: {
@@ -41,11 +46,9 @@ export default {
 			type: String,
 			default: ""
 		},
-		messages: {
-			type: [String, Array],
-			default: () => {
-				return []
-			}
+		placeholder: {
+			type: String,
+			default: ""
 		},
 		autofocus: {
 			type: Boolean,
@@ -59,33 +62,27 @@ export default {
 			type: String,
 			default: ''
 		},
-		required: {
-			type: Boolean,
-			default: false
-		},
-		rules: {
-			type: Array,
-			default: []
-		}
 	},
+	mixins: [ValidateAddon],
 	components: {
 		XInput: () => import('./XInput')
 	},
 	data() {
 		return {
-			isActive: false
+			isActive: false,
+			messages: []
 		}
 	},
 	methods: {
 		onfocus(){
 			this.isActive = true;
 		},
-		onblur(){
+		async onblur(){
 			this.isActive = false;
 		},
-		onInput(e){
+		async onInput(e){
 			this.$emit('input', e.target.value);
-		}
+		},
 	}
 }
 </script>

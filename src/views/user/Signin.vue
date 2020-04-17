@@ -5,8 +5,9 @@
 			<x-text-field
 				label="Account" 
 				:autofocus="true"
-				v-model="model.username"
+				v-model="model.account"
 				class="font-md"
+				:rules="rules.account"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -45,13 +46,14 @@ export default {
 	data(){
 		return {
 			model: {
-				username: "",
+				account: "",
 				password: ""
 			},
 			rules: {
-				username: [
-					v => !!v || 'Username is required!',
-					v => (v && v.length <= 10) || "Username must be less than 10 characters"
+				account: [
+					'required',
+					v => !!v || 'Password is required!',
+					v => (v && v.length <= 10) || "account must be less than 10 characters"
 				],
 				password: [
 					v => !!v || 'Password is required!',
@@ -69,7 +71,7 @@ export default {
 			event.target.blur();
 			let data = {
 				user: {
-					account: this.model.username,
+					account: this.model.account,
 					password: this.model.password
 				}
 			};
