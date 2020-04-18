@@ -5,7 +5,7 @@
 		content: "";
 		@extend .d-block;
 		@extend .position-absolute;
-		@include rfs($height, height);
+		height: $height;
 		bottom: 0;
 	}
 

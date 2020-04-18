@@ -1,6 +1,6 @@
 <template>
-	<div class="container-xxl">
-		<div class="row h-100 min-vh-100 position-relative overflow-x-hidden">
+	<div class="container-xxl overflow-hidden">
+		<div class="row h-100 min-vh-100 position-relative overflow-hidden">
 			<x-sider></x-sider>
 			<div class="content-wrapper">
 				<x-header></x-header>

@@ -3,7 +3,7 @@
 		<div class="header-routes flex-grow-1 d-flex align-items-center">
 			<img :src="logo.url" alt="" class="h-75">
 			<a href="" class="logo-text ">{{ logo.text }}</a>
-			<div class="nav-link main-entries">
+			<div class="nav-link main-entries d-flex">
 				<div class="main-entry"
 					v-for="(entry, index) in mainEntries" 
 					>

@@ -12,6 +12,7 @@
 	.main-entry-link {
 		@include font-size($font-size-sm);
 		@include merge_class(py-1);
+		@include hover-underline($height: 2px);
 	}
 	.main-entry-dot {
 		@include merge_class(mx-2);
