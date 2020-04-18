@@ -10,13 +10,12 @@ module.exports = {
 	lintOnSave: false, 
 	publicPath: "/",
 	runtimeCompiler: true,
+	parallel: require('os').cpus().length > 1, // 并行构建
 	css: {
 		extract: true,
 		loaderOptions: {
 			scss: {
 				prependData: `
-					@import "@/assets/styles/preset.scss";
-					@import "@/assets/styles/framework/index.scss";
 					@import "@/assets/styles/app.scss";
 				`
 			}
@@ -39,6 +38,18 @@ module.exports = {
 
 	},
 	chainWebpack: (config) => {
+
+		/*
+		// config scss loader with fast-sass-loader
+		config.module
+      .rule('.scss')
+      .use('fast-sass-loader')
+      .loader('fast-sass-loader')
+      .tap(options => {
+        return options
+    })
+		*/
+
 		// vue inspect --rule svg : vue-cli 项目中默认带了svg的loader，这里排除对指定目录的默认处理
 		config.module.rule('svg').
 						exclude.

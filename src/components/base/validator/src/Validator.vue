@@ -1,5 +1,5 @@
 <template>
-<ValidationProvider v-if="$slots.default">
+<ValidationProvider ref="provider">
 	<slot></slot>
 </ValidationProvider>
 </template>

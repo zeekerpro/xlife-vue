@@ -1,7 +1,12 @@
+$x-text-field-label-transform: translateY(-70%) scale(0.7);
+
 .x-label {
 	transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 	transform-origin: top left;
 	transform: translate(0, 0);
+	&.scaleup{
+		transform: $x-text-field-label-transform;
+	}
 }
 
 .x-text-field {
@@ -28,9 +33,7 @@
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
     width: 100%;
 	}
-	&.active { .x-label {
-				transform: translateY(-70%) scale(0.7);
-		}
+	&.active { 
 		&:after {
 			transform: scaleX(1);
 		}

@@ -13,6 +13,7 @@
 						>
 						<Validator v-slot="{ errors }" :rules="rules" class="flex-fill" ref="validator" :name="label">
 							<label for="" class="x-label position-absolute t-0 r-auto" 
+								:class="isActive || value ? 'scaleup' : ''"
 								v-if="label">{{label}}</label>
 							<input :type="type" 
 								class="w-100" 
