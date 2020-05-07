@@ -11,6 +11,7 @@
 							:class="isActive ? 'active' : ''"
 						>
 						<Validator v-slot="{validate, errors }" :rules="rules" class="flex-fill" ref="validator" :label="label">
+							<var v-show="false">{{ messages = errors }}</var>
 							<label for="" class="x-label position-absolute t-0 r-auto" 
 								:class="isActive || value ? 'scaleup' : ''"
 								v-if="label">{{ label }}</label>
