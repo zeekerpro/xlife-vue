@@ -2,6 +2,7 @@
 	<div id="SIGNIN" class="d-flex flex-column align-items-center justify-content-center w-100 h-100">
 		<h3> 登录</h3>
 		<x-form class="w-50">
+
 			<x-text-field
 				label="Account" 
 				:autofocus="true"
@@ -31,7 +32,6 @@
 		<div class="w-50 text-right light">
 			<button class="btn-link bg-transparent border-0" @click="toSignup">没有账号 -></button>
 		</div>
-
 	</div>
 </template>
 

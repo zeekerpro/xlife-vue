@@ -1,6 +1,5 @@
 <template>
 		<x-input :messages="messages">
-
 			<template v-slot:prepend v-if="$slots.prepend"> <slot name="prepend"></slot> </template>
 
 			<template v-slot:default>
@@ -11,16 +10,16 @@
 					<div class="x-text-field flex-fill"
 							:class="isActive ? 'active' : ''"
 						>
-						<Validator v-slot="{ errors }" :rules="rules" class="flex-fill" ref="validator" :name="label">
+						<Validator v-slot="{validate, errors }" :rules="rules" class="flex-fill" ref="validator" :label="label">
 							<label for="" class="x-label position-absolute t-0 r-auto" 
 								:class="isActive || value ? 'scaleup' : ''"
-								v-if="label">{{label}}</label>
+								v-if="label">{{ label }}</label>
 							<input :type="type" 
+								:value="value"
 								class="w-100" 
 								@focus="onfocus" 
 								@blur="onblur" 
 								v-focus="autofocus" 
-								:value="value"
 								@input="onInput"
 								:placeholder="placeholder"
 								>
@@ -33,7 +32,6 @@
 			</template>
 
 			<template v-slot:append v-if="$slots.append"> <slot name="append"></slot> </template>
-
 		</x-input>
 </template>
 
@@ -81,10 +79,10 @@ export default {
 		onfocus(){
 			this.isActive = true;
 		},
-		async onblur(){
+		onblur(){
 			this.isActive = false;
 		},
-		async onInput(e){
+		onInput(e){
 			this.$emit('input', e.target.value);
 		},
 	}

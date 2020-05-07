@@ -1,10 +1,3 @@
-<template>
-		<ValidationProvider v-slot="{ validate, errors }" :rules="validRules"  :name="label">
-			<slot :errors="errors"></slot>
-		</ValidationProvider>
-</template>
-
-<script>
 import { ValidationProvider, extend} from 'vee-validate';
 import * as presetRules from 'vee-validate/dist/rules';
 import { messages } from 'vee-validate/dist/locale/zh_CN.json';
@@ -43,7 +36,6 @@ export default {
 	data(){
 		return {
 			validRules: null,
-			messages: null
 		}
 	},
 	mounted(){
@@ -65,5 +57,3 @@ export default {
 		},
 	}
 }
-
-</script>

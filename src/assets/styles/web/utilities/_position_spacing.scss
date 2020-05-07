@@ -1,0 +1,8 @@
+// t-0 l-0 ...
+@each $size, $length in $sizes {
+	@each $prop, $abbrev in (top: t, bottom: b, left: l, right: r){
+		.#{$abbrev}-#{$size} {
+			#{$prop}: $length !important;
+		}
+	}
+}
