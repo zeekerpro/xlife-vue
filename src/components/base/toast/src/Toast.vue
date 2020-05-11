@@ -1,5 +1,5 @@
 <template>
-	<div v-if="show" :class="['toast', fade ? 'fadein' : 'fadeout', mode]">
+	<div  :class="['toast', fade ? 'fadein' : 'fadeout', mode]">
 		{{text}}
 	</div>
 </template>
@@ -38,11 +38,13 @@ export default {
 }
 .fadein {
 	animation: animate_in 1s;
+	opacity: 1;
 }
 .fadeout {
 	animation: animate_out 1s;
 	opacity: 0;
 }
+
 @keyframes animate_in {
 	0%{
 		opacity: 0;

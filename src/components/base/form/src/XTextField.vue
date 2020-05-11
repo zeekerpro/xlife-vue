@@ -22,7 +22,6 @@
 								@blur="onblur" 
 								v-focus="autofocus" 
 								@input="onInput"
-								:placeholder="placeholder"
 								>
 						</Validator>
 					</div>
@@ -41,10 +40,6 @@ export default {
 	name: "XTextField",
 	props: {
 		label: {
-			type: String,
-			default: ""
-		},
-		placeholder: {
 			type: String,
 			default: ""
 		},

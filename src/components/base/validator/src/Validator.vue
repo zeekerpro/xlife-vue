@@ -6,8 +6,7 @@
 
 <script>
 import { ValidationProvider, extend} from 'vee-validate';
-import * as presetRules from 'vee-validate/dist/rules';
-import { messages } from 'vee-validate/dist/locale/zh_CN.json';
+import './rules.js';
 
 export default {
 	name: "Validator",
@@ -31,14 +30,6 @@ export default {
 	},
 	components: {
 		ValidationProvider
-	},
-	created(){
-		Object.keys(presetRules).forEach(rule => {
-			extend(rule, {
-				...presetRules[rule], // copies rule configuration
-				message: messages[rule] // assign message
-			});
-		});
 	},
 	data(){
 		return {

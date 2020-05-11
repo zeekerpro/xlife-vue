@@ -20,6 +20,8 @@
 				label="Password" 
 				v-model="model.password"
 				class="font-md"
+				type="password"
+				:rules="rules.password"
 			  v-on:keyup.enter.native="submit"
 				>
 				<template v-slot:prepend>
@@ -52,12 +54,9 @@ export default {
 			rules: {
 				account: [
 					'required',
-					v => !!v || 'Password is required!',
-					v => (v && v.length <= 10) || "account must be less than 10 characters"
 				],
 				password: [
-					v => !!v || 'Password is required!',
-					v => (v && v.length >= 6) || "Password must be more than 6 characters"
+					'required',
 				]
 			}
 		}
@@ -81,7 +80,7 @@ export default {
 					// 登录成功
 					this.hideViewer();
 					// 刷新页面 
-					this.reload();
+	//				this.reload();
 					this.$toast({
 						text: "登录成功",
 						duration: 2000,
