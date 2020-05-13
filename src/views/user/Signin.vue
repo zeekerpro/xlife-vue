@@ -4,7 +4,6 @@
 		<x-form 
 			class="w-50" 
 			:messages="messages"
-			:submit="submit"
 			ref="form"
 			>
 			<x-text-field
@@ -100,7 +99,7 @@ export default {
 			this.showViewer('views/user/Signup');
 		},
 		doSubmit(){
-			this.$refs.form.$emit('submit');
+			this.$refs.form.$emit('submit', this.submit);
 		}
 	}
 }

@@ -19,18 +19,20 @@ export default {
 		valid: {
 			type: Boolean,
 			default: true 
-		},
-		submit: {
-			type: Function,
-			required: false,
-			default: null
 		}
 	},
 	components: {
 		ValidationObserver
 	},
+	data(){
+		return {
+			// 提交时执行的函数
+			onSubmit: null
+		}
+	},
 	created(){
-		this.$on('submit', function() {
+		this.$on('submit', function(handler) {
+			this.onSubmit = handler;
 			this.$refs.submitBtn.click();
 		})
 	},
