@@ -1,10 +1,14 @@
 <template>
-	<form class="v-form" onsubmit="return false">
+	<ValidationObserver slim v-slot="observer" ref="validationObserver">
+	<form class="x-form" @submit.prevent="observer.handleSubmit(onSubmit)">
 		<slot></slot>
+		<button type="submit" class="d-none" ref="submitBtn"></button>
 	</form>
+	</ValidationObserver>
 </template>
 
 <script>
+import { ValidationObserver } from 'vee-validate';
 export default {
 	name: "XForm",
 	props: {
@@ -12,16 +16,31 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		// 表示表单有效性
-		value: {
+		valid: {
 			type: Boolean,
 			default: true 
+		},
+		submit: {
+			type: Function,
+			required: false,
+			default: null
 		}
 	},
+	components: {
+		ValidationObserver
+	},
+	created(){
+		this.$on('submit', function() {
+			this.$refs.submitBtn.click();
+		})
+	},
 	methods: {
-		reset(){},
-		resetValidation(){},
-		validate(){}
+		reset(){
+		},
+		validate(){
+		},
+		setErrors(errors){
+		}
 	}
 }
 </script>

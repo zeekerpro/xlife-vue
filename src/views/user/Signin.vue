@@ -1,8 +1,12 @@
 <template>
 	<div id="SIGNIN" class="d-flex flex-column align-items-center justify-content-center w-100 h-100">
 		<h3> 登录</h3>
-		<x-form class="w-50">
-
+		<x-form 
+			class="w-50" 
+			:messages="messages"
+			:submit="submit"
+			ref="form"
+			>
 			<x-text-field
 				label="Account" 
 				:autofocus="true"
@@ -22,7 +26,7 @@
 				class="font-md"
 				type="password"
 				:rules="rules.password"
-			  v-on:keyup.enter.native="submit"
+			  v-on:keyup.enter.native="doSubmit"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -58,7 +62,8 @@ export default {
 				password: [
 					'required',
 				]
-			}
+			},
+			messages: []
 		}
 	},
 	methods: {
@@ -67,7 +72,6 @@ export default {
 			'showViewer'
 		]),
 		async submit(event){
-			event.target.blur();
 			let data = {
 				user: {
 					account: this.model.account,
@@ -80,7 +84,7 @@ export default {
 					// 登录成功
 					this.hideViewer();
 					// 刷新页面 
-	//				this.reload();
+					this.reload();
 					this.$toast({
 						text: "登录成功",
 						duration: 2000,
@@ -88,12 +92,16 @@ export default {
 					});
 					break;
 				case HttpStatusCodes.UNAUTHORIZED:
+					this.messages.push('用户名或密码错误');
 					break;
 			}
 		},
 		toSignup(){
 			this.showViewer('views/user/Signup');
 		},
+		doSubmit(){
+			this.$refs.form.$emit('submit');
+		}
 	}
 }
 

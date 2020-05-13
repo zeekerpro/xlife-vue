@@ -10,8 +10,8 @@
 					<div class="x-text-field flex-fill"
 							:class="isActive ? 'active' : ''"
 						>
-						<Validator v-slot="{validate, errors }" :rules="rules" class="flex-fill" ref="validator" :label="label">
-							<var v-show="false">{{ messages = errors }}</var>
+						<Validator v-slot="validateResult" :rules="rules" class="flex-fill" ref="validator" :label="label">
+							<var v-show="false">{{ validateMessages = validateResult.errors}}</var>
 							<label for="" class="x-label position-absolute t-0 r-auto" 
 								:class="isActive || value ? 'scaleup' : ''"
 								v-if="label">{{ label }}</label>
@@ -61,6 +61,12 @@ export default {
 			type: String,
 			default: ''
 		},
+		errors: {
+			type: Array,
+			default: () => {
+				return [];
+			}
+		}
 	},
 	components: {
 		XInput: () => import('./XInput')
@@ -68,7 +74,12 @@ export default {
 	data() {
 		return {
 			isActive: false,
-			messages: []
+			validateMessages: []
+		}
+	},
+	computed: {
+		messages(){
+			return this.errors.concat(this.validateMessages);
 		}
 	},
 	methods: {
