@@ -1,8 +1,7 @@
 <template>
 	<ValidationObserver slim v-slot="observer" ref="validationObserver">
-	<form class="x-form" @submit.prevent="observer.handleSubmit(onSubmit)">
+	<form class="x-form" @submit.prevent="observer.handleSubmit(onSubmit)" ref="form">
 		<slot></slot>
-		<button type="submit" class="d-none" ref="submitBtn"></button>
 	</form>
 	</ValidationObserver>
 </template>
@@ -31,9 +30,11 @@ export default {
 		}
 	},
 	created(){
-		this.$on('submit', function(handler) {
-			this.onSubmit = handler;
-			this.$refs.submitBtn.click();
+		this.$on('submit', function(submitAction) {
+			this.onSubmit = submitAction;
+			// 触发form的submit事件
+			let event = new Event('submit', {'bubbles': true, 'cancelable': true});
+			this.$refs.form.dispatchEvent(event);
 		})
 	},
 	methods: {
