@@ -3,7 +3,8 @@
 		<h3> 登录</h3>
 		<x-form 
 			class="w-50" 
-			:messages="messages"
+			:submitAction="submit"
+			:isEnterSubmit="true"
 			ref="form"
 			>
 			<x-text-field
@@ -25,7 +26,6 @@
 				class="font-md"
 				type="password"
 				:rules="rules.password"
-			  v-on:keyup.enter.native="doSubmit"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -97,9 +97,6 @@ export default {
 		},
 		toSignup(){
 			this.showViewer('views/user/Signup');
-		},
-		doSubmit(){
-			this.$refs.form.$emit('submit', this.submit);
 		}
 	}
 }
