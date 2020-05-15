@@ -4,7 +4,7 @@
 		<x-form 
 			class="w-50" 
 			:submitAction="submit"
-			:isEnterSubmit="true"
+			:isEnterSubmit="false"
 			ref="form"
 			>
 			<x-text-field
@@ -70,7 +70,7 @@ export default {
 			'hideViewer',
 			'showViewer'
 		]),
-		async submit(event){
+		async submit(){
 			let data = {
 				user: {
 					account: this.model.account,
