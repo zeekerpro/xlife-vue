@@ -1,5 +1,5 @@
 <template>
-		<ValidationProvider v-slot="{ validate, errors }" :rules="validRules"  :name="label">
+		<ValidationProvider mode="lazy" v-slot="{ validate, errors }" :rules="validRules"  :name="label">
 			<slot :errors="errors"></slot>
 		</ValidationProvider>
 </template>
@@ -27,6 +27,14 @@ export default {
 			type: String,
 			default: ''
 		},
+		validateMode: {
+			// https://logaretm.github.io/vee-validate/guide/interaction-and-ux.html#interaction-modes
+			type: String,
+			default: "aggressive",
+			validator: function(value){
+				return ['aggressive', 'lazy', 'passive', 'eager'].indexOf(value) != -1;
+			}
+		}
 	},
 	components: {
 		ValidationProvider
@@ -46,7 +54,7 @@ export default {
 			let ruleNames = [];
 			validRules.forEach( (rule, index) => {
 				if(typeof rule == 'function'){
-					extend(`vr_${this.label}_${index}`, rule); // 根据传入的校验函数生成新的校验规则, vr_n 是规则名
+					extend(`vr_${this.label}_${index}`, rule); // 根据传入的校验函数生成新的校验规则, vr_${label}_${n} 是规则名
 					ruleNames.push(`vr_${this.label}_${index}`);
 				}else{
 					ruleNames.push(rule);

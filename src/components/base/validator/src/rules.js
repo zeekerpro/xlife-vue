@@ -12,7 +12,6 @@ Object.keys(presetRules).forEach(rule => {
 });
 
 // 自己配置的rules
-
 extend('password', {
 	validate(value){
 		let pattern = /^(?=.*[a-z])(?=.*\d)(?=.*[#@!~%^&*;:])[a-z\d#@!~%^&*;:]{8,16}$/i;

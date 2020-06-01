@@ -83,18 +83,19 @@ export default {
 			rules: {
 				username: [
 					"required",
-					v => (v && v.length <= 3) || "Username must be less than 3 characters"
+					v => (v && v.length >= 3) || "username 至少3个字符"
 				],
 				email: [
 					"required",
+					"email"
 				],
 				password: [
 					"required",
-					v => (v && v.length >= 6) || "Password must be more than 6 characters"
+					"password"
 				],
 				repassword: [
 					"required",
-					v => (v && v == this.model.password) || "The password does not match"
+					v => (v && v == this.model.password) || "两次输入的密码不一致"
 				]
 			},
 		}
