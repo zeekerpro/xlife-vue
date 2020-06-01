@@ -10,6 +10,7 @@
 			>
 			<x-text-field
 				label="Account" 
+				name="account"
 				:autofocus="true"
 				v-model="model.account"
 				class="font-md"
@@ -23,6 +24,7 @@
 			</x-text-field>
 			<x-text-field
 				label="Password" 
+				name="password"
 				v-model="model.password"
 				class="font-md"
 				type="password"
@@ -93,8 +95,8 @@ export default {
 					break;
 				case HttpStatusCodes.UNAUTHORIZED:
 					this.errors = {
-						Account: ["认证错误"],
-						Password: ["认证错误"]
+						account: ["认证错误"],
+						password: ["认证错误"]
 					};
 					break;
 			}

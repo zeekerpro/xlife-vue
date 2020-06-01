@@ -1,5 +1,5 @@
 <template>
-		<ValidationProvider mode="lazy" v-slot="{ validate, errors }" :rules="validRules"  :name="label">
+		<ValidationProvider :mode="validateMode" v-slot="{ validate, errors }" :rules="validRules"  :name="name">
 			<slot :errors="errors"></slot>
 		</ValidationProvider>
 </template>
@@ -23,7 +23,7 @@ export default {
 				});
 			}
 		},
-		label: {
+		name: {
 			type: String,
 			default: ''
 		},
@@ -54,8 +54,8 @@ export default {
 			let ruleNames = [];
 			validRules.forEach( (rule, index) => {
 				if(typeof rule == 'function'){
-					extend(`vr_${this.label}_${index}`, rule); // 根据传入的校验函数生成新的校验规则, vr_${label}_${n} 是规则名
-					ruleNames.push(`vr_${this.label}_${index}`);
+					extend(`vr_${this.name}_${index}`, rule); // 根据传入的校验函数生成新的校验规则, vr_${name}_${n} 是规则名
+					ruleNames.push(`vr_${this.name}_${index}`);
 				}else{
 					ruleNames.push(rule);
 				}

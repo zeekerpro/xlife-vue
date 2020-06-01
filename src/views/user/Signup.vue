@@ -6,10 +6,12 @@
 			 class="w-50"
 			 :submitAction="submit"
 			 :isEnterSubmit="true"
+			 :errors="errors"
 			>
 			<x-text-field
 				v-model="model.username"
 				label="Username" 
+				name="name"
 				:rules="rules.username"
 				class="font-md"
 				:autofocus="true"
@@ -23,6 +25,7 @@
 			<x-text-field
 				v-model="model.email"
 				label="Email" 
+				name="email"
 				:rules="rules.email"
 				class="font-md"
 				>
@@ -35,8 +38,10 @@
 			<x-text-field
 				v-model="model.password"
 				label="Password"
+				name="password"
 				:rules="rules.password"
 				class="font-md"
+				type="password"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -46,8 +51,9 @@
 			</x-text-field>
 			<x-text-field
 				label="PasswordConfirmation"
-				v-model="model.repassword"
-				:rules="rules.repassword"
+				name="passwordConfirmation"
+				v-model="model.passwordConfirmation"
+				:rules="rules.passwordConfirmation"
 				type="password"
 				class="font-md"
 				>
@@ -78,7 +84,7 @@ export default {
 				username: "",
 				email: "",
 				password: "",
-				repassword: ""
+				passwordConfirmation: ""
 			},
 			rules: {
 				username: [
@@ -93,11 +99,12 @@ export default {
 					"required",
 					"password"
 				],
-				repassword: [
+				passwordConfirmation: [
 					"required",
 					v => (v && v == this.model.password) || "两次输入的密码不一致"
 				]
 			},
+			errors: {}
 		}
 	},
 	methods: {
@@ -111,7 +118,7 @@ export default {
 					name: this.model.username,
 					email: this.model.email,
 					password: this.model.password,
-					password_confirmation: this.model.repassword
+					password_confirmation: this.model.passwordConfirmation
 				}
 			};
 			let ret = await userService.signup(data);
@@ -126,7 +133,7 @@ export default {
 					});
 					break;
 				case HttpStatusCodes.CONFLICT: // 该用户名/邮箱已经被注册
-					let data = ret.data;
+					this.errors = ret.data;
 					break;
 			}
 		},

@@ -10,7 +10,7 @@
 					<div class="x-text-field flex-fill"
 							:class="isActive ? 'active' : ''"
 						>
-						<Validator v-slot="validateResult" :rules="rules" class="flex-fill" ref="validator" :label="label">
+						<Validator v-slot="validateResult" :rules="rules" class="flex-fill" ref="validator" :label="label" :name="name">
 							<var v-show="false">{{ validateMessages = validateResult.errors }}</var>
 							<label for="" class="x-label position-absolute t-0 r-auto" 
 								:class="isActive || value ? 'scaleup' : ''"
@@ -41,6 +41,11 @@ export default {
 	props: {
 		label: {
 			type: String,
+			default: ""
+		},
+		name: {
+			type: String,
+			required: true,
 			default: ""
 		},
 		autofocus: {
