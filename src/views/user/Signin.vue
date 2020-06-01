@@ -4,7 +4,8 @@
 		<x-form 
 			class="w-50" 
 			:submitAction="submit"
-			:isEnterSubmit="false"
+			:isEnterSubmit="true"
+			:errors="errors"
 			ref="form"
 			>
 			<x-text-field
@@ -62,7 +63,7 @@ export default {
 					'required',
 				]
 			},
-			messages: []
+			errors: {}
 		}
 	},
 	methods: {
@@ -91,7 +92,10 @@ export default {
 					});
 					break;
 				case HttpStatusCodes.UNAUTHORIZED:
-					this.messages.push('用户名或密码错误');
+					this.errors = {
+						Account: ["认证错误"],
+						Password: ["认证错误"]
+					};
 					break;
 			}
 		},

@@ -26,11 +26,17 @@ export default {
 		},
 		isEnterSubmit: {
 			type: Boolean,
-			default: false 
+			default: false
 		},
 		submitAction: {
 			type: Function,
 			required: true
+		},
+		errors: {
+			type: Object,
+			default: () => {
+				return {};
+			}
 		}
 	},
 	components: {
@@ -39,6 +45,11 @@ export default {
 	created(){
 		// 监听submit事件
 		this.$on('submit', this.submit);
+	},
+	watch: {
+		errors: function(){
+			this.$refs.validationObserver.setErrors(this.errors);
+		}
 	},
 	methods: {
 		submit(){

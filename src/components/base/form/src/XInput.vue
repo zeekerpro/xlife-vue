@@ -9,6 +9,7 @@
 			<div class="x-input-slot d-flex align-items-center mb-2 position-relative">
 				<slot name="default"></slot>
 			</div>
+
 			<div class="x-input-messages text-left" v-show="messages">
 				<div v-for="message in messages" class="x-input-message font-sm text-break">{{message}}</div>
 			</div>
