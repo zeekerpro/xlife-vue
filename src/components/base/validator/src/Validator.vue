@@ -46,8 +46,8 @@ export default {
 			let ruleNames = [];
 			validRules.forEach( (rule, index) => {
 				if(typeof rule == 'function'){
-					extend(`vr_${index}`, rule); // 根据传入的校验函数生成新的校验规则, vr_n 是规则名
-					ruleNames.push(`vr_${index}`);
+					extend(`vr_${this.label}_${index}`, rule); // 根据传入的校验函数生成新的校验规则, vr_n 是规则名
+					ruleNames.push(`vr_${this.label}_${index}`);
 				}else{
 					ruleNames.push(rule);
 				}

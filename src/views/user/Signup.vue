@@ -4,6 +4,8 @@
 		<x-form 
 			 ref="signupForm"
 			 class="w-50"
+			 :submitAction="submit"
+			 :isEnterSubmit="true"
 			>
 			<x-text-field
 				v-model="model.username"
@@ -20,9 +22,9 @@
 			</x-text-field>
 			<x-text-field
 				v-model="model.email"
+				label="Email" 
 				:rules="rules.email"
 				class="font-md"
-				label="Email" 
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -32,10 +34,9 @@
 			</x-text-field>
 			<x-text-field
 				v-model="model.password"
-				:rules="rules.password"
-				:required="true"
-				class="font-md"
 				label="Password"
+				:rules="rules.password"
+				class="font-md"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -44,12 +45,11 @@
 				</template>
 			</x-text-field>
 			<x-text-field
+				label="PasswordConfirmation"
 				v-model="model.repassword"
 				:rules="rules.repassword"
 				type="password"
-			  v-on:keyup.enter="submit"
 				class="font-md"
-				label="Password Confirmation"
 				>
 				<template v-slot:prepend>
 					<div class="prepend-icon">
@@ -82,20 +82,21 @@ export default {
 			},
 			rules: {
 				username: [
-					v => !!v || 'Username is required!',
-					v => (v && v.length <= 10) || "Username must be less than 10 characters"
+					"required",
+					v => (v && v.length <= 3) || "Username must be less than 3 characters"
 				],
 				email: [
-					v => !!v || 'Email is required!'
+					"required",
 				],
 				password: [
-					v => !!v || 'Password is required!',
+					"required",
 					v => (v && v.length >= 6) || "Password must be more than 6 characters"
 				],
 				repassword: [
+					"required",
 					v => (v && v == this.model.password) || "The password does not match"
 				]
-			}
+			},
 		}
 	},
 	methods: {
@@ -103,8 +104,7 @@ export default {
 			'hideViewer',
 			'showViewer'
 		]),
-		async submit(event){
-			event.target.blur();
+		async submit(){
 			let data = {
 				user: {
 					name: this.model.username,
@@ -126,12 +126,6 @@ export default {
 					break;
 				case HttpStatusCodes.CONFLICT: // 该用户名/邮箱已经被注册
 					let data = ret.data;
-					/*
-					this.errors.username = data.name;
-					this.errors.email = data.email;
-					this.errors.password = data.password;
-					this.errors.repassword = data.password;
-					*/
 					break;
 			}
 		},
