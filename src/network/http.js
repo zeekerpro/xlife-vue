@@ -5,6 +5,7 @@
 import axios from 'axios';
 import Token from '@/utils/Token';
 import store from '@/store';
+import * as HttpStatusCodes from '@/utils/HttpStatusCodes';
 
 // 1. create axios instance
 const httpService = axios.create({
@@ -36,7 +37,8 @@ httpService.interceptors.response.use( response => {
 function responseErrorHandler(error){
 	let response = error.response;
 	switch(response.status){
-		case 401:
+		case HttpStatusCodes.UNAUTHORIZED:
+			// 认证失败，删除token，转到登录页
 			store.commit('user/setToken', null);
 			store.commit('layout/showViewer', 'views/user/Signin');
 			break;
