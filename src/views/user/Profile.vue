@@ -1,7 +1,7 @@
 <template>
 	<div>
 		user profile page
-		<button @click="signout">退出登录</button>
+		<button v-throttle="{event: 'click', timeout: 1000, handler: signout}" ref="btn">退出登录</button>
 	</div>
 </template>
 
@@ -18,4 +18,5 @@ export default {
 	}
 }
 </script>
+
 <style></style>

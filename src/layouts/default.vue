@@ -47,11 +47,13 @@ export default {
 		})
 	},
 	methods: {
-		reload () {
+		async reload () {
+			/*
+			this.$forceUpdate();
+			*/
       this.isRouterAlive = false
-      this.$nextTick(function () {
-        this.isRouterAlive = true
-      })
+      await this.$nextTick();
+      this.isRouterAlive = true
     }
 	}
 }
