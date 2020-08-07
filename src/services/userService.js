@@ -7,11 +7,9 @@ class UserService extends AbstractService {
 
 	async users(){
 		let data = null;
+		const url = "/users";
 		try {
-			let ret = await this.send({
-				url: '/users',
-				method: 'GET'
-			});
+			let ret = await this.get(null, url);
 			data = ret.data;
 		} catch(error){}finally {} 
 		return data;
@@ -19,12 +17,9 @@ class UserService extends AbstractService {
 
 	async signin(user){
 		let ret = null;
+		let url = "/signin";
 		try {
-			ret = await this.send({
-				url: '/signin',
-				method: 'POST',
-				data: user
-			});
+			ret = await this.post(user, url);
 			store.commit('user/setUserInfo', ret.data);
 		} catch(error){
 			ret = error.response;
@@ -33,24 +28,18 @@ class UserService extends AbstractService {
 	}
 
 	async signout(user){
-		let ret = this.send({
-			url: '/signout',
-			method: 'POST',
-			data: user
-		});
+		const url = "/signout";
+		let ret = await this.post(user, url);
 		store.commit('user/setToken', null);
 		location.reload();
 		return ret;
 	}
 
 	async signup(user){
+		const url = "/signup";
 		let ret = null;
 		try {
-			ret = await this.send({
-				url: '/signup',
-				method: 'POST',
-				data: user
-			});
+			ret = await this.post(user, url);
 			store.commit('user/setUserInfo', ret.data);
 		}catch(error){
 			ret = error.response;
@@ -62,11 +51,9 @@ class UserService extends AbstractService {
 	 * 初始化用户登录状态
 	 */
 	async initSignState(){
+		const url = "/users/current";
 		try {
-			let ret = await this.send({
-				url: '/users/current',
-				method: 'POST'
-			});
+			let ret = await this.get(null, url);
 			store.commit('user/setUserInfo', ret.data);
 		}catch(error){}
 	}

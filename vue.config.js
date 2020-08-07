@@ -6,6 +6,8 @@ function resolve(dir){
 
 let svgImgs =  resolve("src/assets/svg/imgs");
 
+const title = "xlife"
+
 module.exports = {
 	lintOnSave: false, 
 	publicPath: "/",
@@ -37,8 +39,12 @@ module.exports = {
 		*/
 
 	},
+	// webpack 基础配置
+	configureWebpack: {
+		name: title
+	},
+	// webpack 高级链式配置，可以更细粒度的配置webpack
 	chainWebpack: (config) => {
-
 		/*
 		// config scss loader with fast-sass-loader
 		config.module

@@ -12,9 +12,12 @@
 						>
 						<Validator v-slot="validateResult" :rules="rules" class="flex-fill" ref="validator" :label="label" :name="name">
 							<var v-show="false">{{ validateMessages = validateResult.errors }}</var>
-							<label for="" class="x-label position-absolute t-0 r-auto" 
+							<label for="" 
+								class="x-label position-absolute t-0 r-auto" 
 								:class="isActive || value ? 'scaleup' : ''"
-								v-if="label">{{ label }}</label>
+								v-if="label">
+								{{ label }}
+							</label>
 							<input :type="type" 
 								:value="value"
 								class="w-100" 
