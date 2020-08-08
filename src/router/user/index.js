@@ -1,7 +1,4 @@
-import signupRoute from "./signup.js";
 import listRoute from "./list.js";
-import profileRoute from "./profile.js";
-
 
 export default {
 	path: 'user',
@@ -13,8 +10,6 @@ export default {
 		}
 	},
 	children: [
-		signupRoute,
-		profileRoute,
 		listRoute
 	]
 };

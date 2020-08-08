@@ -18,10 +18,11 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import mxLayoutStoreMap from '@/mixins/storeMap/layout';
 
 export default {
 	name: "DefaultLayout",
+	mixins: [mxLayoutStoreMap],
 	provide () {
     return {
       reload: this.reload
@@ -39,18 +40,8 @@ export default {
 		xSider: () => import('@/components/core/Sider'),
 		xViewer: () => import('@/components/core/Viewer'),
 	},
-	computed: {
-		...mapState('layout', {
-			viewerComponent: (state) => {
-				return state.viewerComponent;
-			}
-		})
-	},
 	methods: {
 		async reload () {
-			/*
-			this.$forceUpdate();
-			*/
       this.isRouterAlive = false
       await this.$nextTick();
       this.isRouterAlive = true

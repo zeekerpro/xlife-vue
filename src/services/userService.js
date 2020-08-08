@@ -31,6 +31,7 @@ class UserService extends AbstractService {
 		const url = `/signout`;
 		let ret = await this.delete({from: url});
 		store.commit('user/setToken', null);
+		store.commit('layout/showViewer', 'views/user/Signin');
 		return ret;
 	}
 

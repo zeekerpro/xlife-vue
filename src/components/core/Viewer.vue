@@ -1,7 +1,7 @@
 <template>
 		<div id="APP-VIEWER" 
-			v-show="isShow"
-			:class="isShow ? 'show' : 'hide'"
+			v-show="isShowViewer"
+			:class="isShowViewer ? 'show' : 'hide'"
 			class="position-absolute h-100 w-75 t-0 r-0 d-flex" >
 			<div class="add-on w-10 d-flex flex-column align-items-end">
 				<div class="close-btn-wrapper position-relative"
@@ -19,22 +19,11 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import mxLayoutStoreMap from '@/mixins/storeMap/layout.js';
 
 export default {
 	name: "XViewer",
-	computed: {
-		...mapState('layout', {
-			isShow: (state) => {
-				return state.isShowViewer;
-			}
-		})
-	},
-	methods: {
-		...mapMutations('layout',[
-			'hideViewer'
-		])
-	}
+	mixins: [mxLayoutStoreMap],
 }
 </script>
 

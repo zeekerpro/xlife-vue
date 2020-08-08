@@ -71,9 +71,9 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex'
 import userService from '@/services/userService';
 import * as HttpStatusCodes from '@/utils/HttpStatusCodes';
+import mxLayoutStoreMap from '@/mixins/storeMap/layout';
 
 export default {
 	name: "signup",
@@ -108,10 +108,6 @@ export default {
 		}
 	},
 	methods: {
-		...mapMutations('layout',[
-			'hideViewer',
-			'showViewer'
-		]),
 		async submit(){
 			let data = {
 				user: {

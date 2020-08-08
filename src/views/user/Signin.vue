@@ -44,13 +44,14 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex'
 import userService from '@/services/userService';
 import * as HttpStatusCodes from '@/utils/HttpStatusCodes';
+import mxLayoutStoreMap from '@/mixins/storeMap/layout';
 
 export default {
 	name: "signin",
 	inject: ['reload'],
+	mixins: [mxLayoutStoreMap],
 	data(){
 		return {
 			model: {
@@ -69,10 +70,6 @@ export default {
 		}
 	},
 	methods: {
-		...mapMutations('layout',[
-			'hideViewer',
-			'showViewer'
-		]),
 		async submit(){
 			let data = {
 				user: {

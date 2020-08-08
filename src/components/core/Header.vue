@@ -33,9 +33,12 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
+import mxLayoutStoreMap from '@/mixins/storeMap/layout';
+import mxUserStoreMap from '@/mixins/storeMap/user';
+
 export default {
 	name: "Header",
+	mixins: [mxLayoutStoreMap, mxUserStoreMap],
 	data(){
 		return {
 			logo: {
@@ -66,16 +69,7 @@ export default {
 			]
 		}
 	},
-	computed: {
-		...mapGetters('user', [
-			'isSigned',
-			'userInfo'
-		])
-	},
 	methods: {
-		...mapMutations('layout',[
-			'showViewer'
-		]),
 		displayViewerPanel(){
 			let viewerComponentPath = this.isSigned ? 'views/user/Profile' : 'views/user/Signin';
 			this.showViewer(viewerComponentPath);

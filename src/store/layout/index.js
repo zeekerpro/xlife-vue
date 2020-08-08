@@ -1,7 +1,7 @@
 /**
  * 右侧内容窗口显示控制
- *
  */
+
 const state = {
 	isShowViewer: false,
 	viewerComponent: null

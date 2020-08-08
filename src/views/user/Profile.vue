@@ -12,8 +12,8 @@ export default {
 	name: "UserProfile",
 	inject: ['reload'],
 	methods: {
-		signout: () => {
-			userService.signout();
+		signout: async () => {
+			await userService.signout();
 		}
 	}
 }
