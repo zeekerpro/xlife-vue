@@ -19,7 +19,7 @@ class UserService extends AbstractService {
 		let ret = null;
 		let url = "/signin";
 		try {
-			ret = await this.post(user, url);
+			ret = await this.post({data: user, to: url});
 			store.commit('user/setUserInfo', ret.data);
 		} catch(error){
 			ret = error.response;
@@ -27,11 +27,10 @@ class UserService extends AbstractService {
 		return ret;
 	}
 
-	async signout(user){
-		const url = "/signout";
-		let ret = await this.post(user, url);
+	async signout(){
+		const url = `/signout`;
+		let ret = await this.delete({from: url});
 		store.commit('user/setToken', null);
-		location.reload();
 		return ret;
 	}
 
@@ -39,7 +38,7 @@ class UserService extends AbstractService {
 		const url = "/signup";
 		let ret = null;
 		try {
-			ret = await this.post(user, url);
+			ret = await this.post({data: user, to: url});
 			store.commit('user/setUserInfo', ret.data);
 		}catch(error){
 			ret = error.response;

@@ -10,7 +10,7 @@ class AbstractService {
 	postJson(data, url) {
 		return request({
 			url: url,
-			method: 'POST',
+			method: 'post',
 			headers: {
 				'Content-Type': 'application/json;charset=UTF-8'
 			},
@@ -18,47 +18,59 @@ class AbstractService {
 		})
 	}
 
-
-	post(data, url) {
+	// post({data: data, to: url})
+	post({data, to}) {
 		return request({
-			url: url,
-			method: 'POST',
+			url: to,
+			method: 'post',
 			data: data
 		})
 	}
 
-  get(params, url){
+	// get(from, query)
+  get(query, from){
     return request({
 			url: url,
-			method: 'GET',
-			params: params
+			method: 'get',
+			params: query 
 		})
   }
 
+	// delete({from: '/url', params: {}})
+	delete({from, params}){
+    return request({
+			url: from,
+			method: 'delete',
+			params, params
+		})
+	}
+
 	// 上传文件
-	upload(data, url = "/upload"){
+	// upload({file: formData})
+	upload({file, to = "/upload"}){
 		return request({
-			url: url,
-			method: 'POST',
+			url: to,
+			method: 'post',
 			headers: {
 				'Content-Type': 'multipart/form-data;charset=UTF-8'
 			},
-			data: data
+			data: file 
 		});
 	}
 
 	// 下载附件
-	async download(params, filename, url = '/download'){
+	// download({fileName: 'xxx.xlsx', from:'/download', query: {}})
+	async download({fileName = "download", from = '/download', query}){
 		let ret = await request({
 			url: url,
-			method: 'GET',
+			method: 'get',
 			responseType: 'blob',
-			params: params
+			params: query 
 		});
 		const downUrl = window.URL.createObjectURL(new Blob([ret]));
 		const link = document.createElement("a");
 		link.href = downUrl;
-		link.setAttribute("download", filename);
+		link.setAttribute("download", fileName);
 		document.body.appendChild(link);
 		link.click();
 		link.parentNode.removeChild(link);
