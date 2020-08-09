@@ -1,4 +1,5 @@
 import listRoute from "./list.js";
+import detailRoute from "./detail.js";
 
 export default {
 	path: 'user',
@@ -10,6 +11,7 @@ export default {
 		}
 	},
 	children: [
-		listRoute
+		listRoute,
+		detailRoute
 	]
 };

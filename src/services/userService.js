@@ -1,5 +1,6 @@
 import AbstractService from './AbstractService.js';
 import store from '@/store';
+import router from '@/router';
 import Token from '@/utils/Token';
 import * as HttpStatusCodes from '@/utils/HttpStatusCodes';
 
@@ -20,6 +21,7 @@ class UserService extends AbstractService {
 		let url = "/signin";
 		try {
 			ret = await this.post({data: user, to: url});
+			console.log(ret);
 			store.commit('user/setUserInfo', ret.data);
 		} catch(error){
 			ret = error.response;
@@ -31,7 +33,9 @@ class UserService extends AbstractService {
 		const url = `/signout`;
 		let ret = await this.delete({from: url});
 		store.commit('user/setToken', null);
+		store.commit('user/setUserInfo', null);
 		store.commit('layout/showViewer', 'views/user/Signin');
+		router.push({name: 'root'});
 		return ret;
 	}
 

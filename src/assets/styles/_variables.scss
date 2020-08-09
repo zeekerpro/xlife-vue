@@ -2,12 +2,13 @@
 $primary:  #15363e;
 $light: rgb(45, 126, 177);
 $light-green: rgb(47, 120, 138);
-
+$lighter: rgb(65, 199, 189);
 
 $theme-colors: (
 	"primary": $primary,
 	"light": $light,
-	"light-green": $light-green
+	"light-green": $light-green,
+	"lighter": $lighter
 ) !default;
 
 

@@ -1,6 +1,6 @@
 export default {
 	path: 'list',
-	name: 'list',
+	name: 'userList',
 	components: {
 		default: () => {
 			return import(/* webpackChunkName: "user" */"@/views/user/List") 
