@@ -60,20 +60,27 @@ class AbstractService {
 
 	// 下载附件
 	// download({fileName: 'xxx.xlsx', from:'/download', query: {}})
-	async download({fileName = "download", from = '/download', query}){
+	async getFileUrl({fileName = "download", from = '/download', query}){
+		const fileUrl = await this.getFileUrl({from = '/download', query}) 
+		const link = document.createElement("a");
+		link.href = fileUrl;
+		link.setAttribute("download", fileName);
+		document.body.appendChild(link);
+		link.click();
+		link.parentNode.removeChild(link);
+	}
+
+	// 获取文件流url
+	// getFileUrl({from:'/download', query: {}})
+	async download({from = '/download', query}){
 		let ret = await request({
 			url: url,
 			method: 'get',
 			responseType: 'blob',
 			params: query 
 		});
-		const downUrl = window.URL.createObjectURL(new Blob([ret]));
-		const link = document.createElement("a");
-		link.href = downUrl;
-		link.setAttribute("download", fileName);
-		document.body.appendChild(link);
-		link.click();
-		link.parentNode.removeChild(link);
+		const fileUrl = window.URL.createObjectURL(new Blob([ret]));
+		return fileUrl;
 	}
 
 }
