@@ -1,5 +1,5 @@
 <template>
-	<div class="profile-wrapper d-flex flex-column w-100 h-100 rounded-sm px-4 pt-4 min-vh-100 h-auto">
+	<div class="profile-wrapper d-flex flex-column w-100 h-100 rounded-sm p-4 min-vh-100 h-auto">
 		<div class="profile-content d-flex flex-grow-1">
 			<div class="account-info d-flex">
 				<div class="avatar-wrapper d-flex flex-column mr-3">
@@ -12,7 +12,10 @@
 				<div class="brief-wrapper d-flex flex-column ml-1">
 					<div class="user-title d-flex light">
 						<span class="font-md"> {{ userInfo.name }} </span>
-						<div class="operator-wrapper d-flex align-items-center w-100"></div>
+						<div class="operator-wrapper d-flex align-items-center w-100">
+							<iconfont name="xedit" class="font-md cursor-pointer"></iconfont>
+							<iconfont name="xpower" class="font-md cursor-pointer"></iconfont>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -10,7 +10,7 @@ class UserService extends AbstractService {
 		let data = null;
 		const url = "/users";
 		try {
-			let ret = await this.get(null, url);
+			let ret = await this.get({from: url});
 			data = ret.data;
 		} catch(error){}finally {} 
 		return data;
@@ -21,7 +21,6 @@ class UserService extends AbstractService {
 		let url = "/signin";
 		try {
 			ret = await this.post({data: user, to: url});
-			console.log(ret);
 			store.commit('user/setUserInfo', ret.data);
 		} catch(error){
 			ret = error.response;
@@ -55,11 +54,13 @@ class UserService extends AbstractService {
 	 * 初始化用户登录状态
 	 */
 	async initSignState(){
-		const url = "/users/current";
+		const url = "/current_user";
 		try {
-			let ret = await this.get(null, url);
+			let ret = await this.get({from: url});
 			store.commit('user/setUserInfo', ret.data);
-		}catch(error){}
+		}catch(error){
+			console.log(error);
+		}
 	}
 	
 }

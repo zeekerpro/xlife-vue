@@ -19,7 +19,7 @@ class AbstractService {
 	}
 
 	// post({data: data, to: url})
-	post({data, to}) {
+	post({data, to} = {}) {
 		return request({
 			url: to,
 			method: 'post',
@@ -27,17 +27,17 @@ class AbstractService {
 		})
 	}
 
-	// get(from, query)
-  get(query, from){
+	// get({from: url, query: params})
+  get({from, query} = {}){
     return request({
-			url: url,
+			url: from,
 			method: 'get',
 			params: query 
 		})
   }
 
 	// delete({from: '/url', params: {}})
-	delete({from, params}){
+	delete({from, params} = {}){
     return request({
 			url: from,
 			method: 'delete',
@@ -47,7 +47,7 @@ class AbstractService {
 
 	// 上传文件
 	// upload({file: formData})
-	upload({file, to = "/upload"}){
+	upload({file, to = "/upload"} = {}){
 		return request({
 			url: to,
 			method: 'post',

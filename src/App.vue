@@ -9,10 +9,9 @@ import userService from '@/services/userService';
 
 export default {
 	name: 'App',
-	created(){
-		// 初始化用户登录状态
+	mounted(){
 		userService.initSignState();
-	}
+	},
 }
 </script>
 

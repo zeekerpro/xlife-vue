@@ -2,7 +2,6 @@ import Token from '@/utils/Token';
  
 const state = {
 	token: Token.get(),
-	userInfo: {}
 }
 
 const mutations = {
@@ -23,8 +22,8 @@ const mutations = {
 const actions = {}
 
 const getters = {
+	isSigned: (state) => !!state.token,
 	userInfo: (state) => state.userInfo,
-	isSigned: (state) => !!state.token
 }
 
 export default {
