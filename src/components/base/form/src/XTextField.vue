@@ -21,6 +21,7 @@
 							<input :type="type" 
 								:value="value"
 								class="w-100" 
+								:autocomplete="autocomplete ? 'on' : 'off'"
 								@focus="onfocus" 
 								@blur="onblur" 
 								v-focus="autofocus" 
@@ -53,6 +54,11 @@ export default {
 		},
 		autofocus: {
 			type: Boolean,
+			default: false
+		},
+		autocomplete: {
+			type: Boolean,
+			required: false,
 			default: false
 		},
 		type: {
