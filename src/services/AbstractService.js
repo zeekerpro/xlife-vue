@@ -2,14 +2,18 @@ import request from '@/network/http';
 
 class AbstractService {
 
+	_baseUrl = "/"
+
 	async send(params){
 		let res = await request(params);
 		return res;
 	}
 
-	postJson(data, url) {
+	// postJson({data: data, to: url})
+	postJson({data, to} = {}){
+		let url = this._baseUrl + to;
 		return request({
-			url: url,
+			url: url, 
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json;charset=UTF-8'
@@ -20,8 +24,9 @@ class AbstractService {
 
 	// post({data: data, to: url})
 	post({data, to} = {}) {
+		let url = this._baseUrl + to;
 		return request({
-			url: to,
+			url: url,
 			method: 'post',
 			data: data
 		})
@@ -29,8 +34,9 @@ class AbstractService {
 
 	// get({from: url, query: params})
   get({from, query} = {}){
+		let url = this._baseUrl + from;
     return request({
-			url: from,
+			url: url,
 			method: 'get',
 			params: query 
 		})
@@ -38,8 +44,9 @@ class AbstractService {
 
 	// delete({from: '/url', params: {}})
 	delete({from, params} = {}){
+		let url = this._baseUrl + from;
     return request({
-			url: from,
+			url: url,
 			method: 'delete',
 			params, params
 		})
@@ -48,8 +55,9 @@ class AbstractService {
 	// 上传文件
 	// upload({file: formData})
 	upload({file, to = "/upload"} = {}){
+		let url = this._baseUrl + ro;
 		return request({
-			url: to,
+			url: url,
 			method: 'post',
 			headers: {
 				'Content-Type': 'multipart/form-data;charset=UTF-8'
@@ -74,7 +82,7 @@ class AbstractService {
 	// getFileUrl({from:'/download', query: {}})
 	async getFileUrl({from = '/download', query} = {}){
 		let ret = await request({
-			url: url,
+			url: from,
 			method: 'get',
 			responseType: 'blob',
 			params: query 

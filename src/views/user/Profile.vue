@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import userService from '@/services/userService';
+import userService from '@/services/rest/userService';
 import mxUserStoreMap from '@/mixins/storeMap/user';
 
 export default {

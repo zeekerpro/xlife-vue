@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import userService from '@/services/userService';
+import userService from '@/services/rest/userService';
 import * as HttpStatusCodes from '@/utils/HttpStatusCodes';
 import mxLayoutStoreMap from '@/mixins/storeMap/layout';
 

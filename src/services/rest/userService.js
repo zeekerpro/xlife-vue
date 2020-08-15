@@ -1,10 +1,10 @@
-import AbstractService from './AbstractService.js';
+import RestService from '@/services/rest/RestService.js';
 import store from '@/store';
 import router from '@/router';
 import Token from '@/utils/Token';
 import * as HttpStatusCodes from '@/utils/HttpStatusCodes';
 
-class UserService extends AbstractService {
+class UserService extends RestService{
 
 	async users(){
 		let data = null;
@@ -54,7 +54,7 @@ class UserService extends AbstractService {
 	 * 初始化用户登录状态
 	 */
 	async initSignState(){
-		const url = "/current_user";
+		const url = "/profile";
 		try {
 			let ret = await this.get({from: url});
 			store.commit('user/setUserInfo', ret.data);
