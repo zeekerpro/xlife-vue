@@ -6,9 +6,16 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "16649863",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
       "icon_id": "16505647",
       "name": "power",
-      "font_class": "xpower",
+      "font_class": "power",
       "unicode": "e62b",
       "unicode_decimal": 58923
     },

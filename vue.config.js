@@ -56,6 +56,9 @@ module.exports = {
     })
 		*/
 
+	  // 修复HMR 失效
+    config.resolve.symlinks(true);
+
 		// vue inspect --rule svg : vue-cli 项目中默认带了svg的loader，这里排除对指定目录的默认处理
 		config.module.rule('svg').
 						exclude.
