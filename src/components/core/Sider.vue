@@ -39,7 +39,7 @@ export default {
     left:0;
     top:0;
     background: inherit;
-    filter: blur(5px);/*为了模糊更明显，调高模糊度*/
+    filter: blur(2px);/*为了模糊更明显，调高模糊度*/
     z-index: 2;
 	}
 }
