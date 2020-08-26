@@ -28,19 +28,8 @@ export default {
 }
 
 .lock{
-	width: 40% !important;
+	width: 33% !important;
 	background-image: url("/images/launchScreen.jpg");
 	background-size: cover;	
-	&:after {
-		content: "";
-    width:100%;
-    height:100%;
-    position: absolute;
-    left:0;
-    top:0;
-    background: inherit;
-    filter: blur(2px);/*为了模糊更明显，调高模糊度*/
-    z-index: 2;
-	}
 }
 </style>

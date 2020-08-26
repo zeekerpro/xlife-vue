@@ -22,7 +22,7 @@
 	@include merge_class(flex-column, position-fixed, t-0, h-100);
 	z-index: $sidebar-z-index;
 	@include transition($sidebar-transition);
-	background-color: $sidebar-background-color;
+//	background-color: $sidebar-background-color;
 }
 
 #APP-FOOTER {
@@ -48,7 +48,7 @@
 // 右侧滑动显示内容区域
 #APP-VIEWER {
 	z-index: $zindex-fixed;
-	max-width: $viewer-max-width;
+//	max-width: $viewer-max-width;
 	transition: $viewer-transition;
 	&.show {
 		transform: translateX(0);

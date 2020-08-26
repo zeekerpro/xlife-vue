@@ -17,7 +17,9 @@
 					</iconfont>
 				</div>
 			</div>
-			<div class="viewer-content h-100 flex-fill overflow-y-auto">
+			<div class="viewer-content h-100 flex-fill overflow-y-auto"
+					 :class="{'bg-transparent': !isSigned}"
+				>
 				<slot></slot>
 			</div>
 		</div>

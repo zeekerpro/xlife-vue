@@ -2,7 +2,7 @@
 	<div id="SIGNIN" class="d-flex flex-column align-items-center justify-content-center w-100 h-100">
 		<h3> 登录</h3>
 		<x-form 
-			class="w-50" 
+			class="signin-form w-50" 
 			:submitAction="submit"
 			:isEnterSubmit="true"
 			:errors="errors"
@@ -105,3 +105,7 @@ export default {
 }
 
 </script>
+
+<style lang="scss" scoped>
+
+</style>

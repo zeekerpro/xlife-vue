@@ -2,7 +2,7 @@
 	<div class="container-xxl overflow-hidden">
 		<div class="row h-100 min-vh-100 position-relative overflow-hidden">
 			<x-sider></x-sider>
-			<div class="content-wrapper">
+			<div class="content-wrapper" v-if="isSigned">
 				<x-header></x-header>
 				<x-banner></x-banner>
 				<div id="APP-MAIN-CONTENT">
@@ -19,10 +19,11 @@
 
 <script>
 import mxLayoutStoreMap from '@/mixins/storeMap/layout';
+import mxUserStoreMap from '@/mixins/storeMap/user';
 
 export default {
 	name: "DefaultLayout",
-	mixins: [mxLayoutStoreMap],
+	mixins: [mxLayoutStoreMap, mxUserStoreMap],
 	provide () {
     return {
       reload: this.reload
