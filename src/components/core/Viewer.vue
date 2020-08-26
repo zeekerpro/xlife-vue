@@ -3,16 +3,21 @@
 			v-show="isShowViewer"
 			:class="isShowViewer ? 'show' : 'hide'"
 			class="position-absolute h-100 w-75 t-0 r-0 d-flex" >
-			<div class="add-on w-10 d-flex flex-column align-items-end">
+			<div class="add-on w-10 d-flex flex-column align-items-end"
+				:class="[isSigned ? '' : 'justify-content-center']"
+				>
 				<div class="close-btn-wrapper position-relative"
-						 @click="hideViewer"
+						 @click="hideViewerHandler"
 					>
-					<div class="close-btn d-flex align-items-center justify-content-center">
-					</div>
-					<iconfont name="xclose" class="font-md font-weight-bolder light position-absolute t-0 r-0"></iconfont>
+					<div class="close-btn d-flex align-items-center justify-content-center"></div>
+					<iconfont 
+						:name="isSigned ? 'xclose' : 'xlock'" 
+						class="font-md font-weight-bolder light position-absolute t-0 r-0"
+						>
+					</iconfont>
 				</div>
 			</div>
-			<div class="viewer-content h-100 flex-fill">
+			<div class="viewer-content h-100 flex-fill overflow-y-auto">
 				<slot></slot>
 			</div>
 		</div>
@@ -20,10 +25,18 @@
 
 <script>
 import mxLayoutStoreMap from '@/mixins/storeMap/layout.js';
+import mxUserStoreMap from '@/mixins/storeMap/user';
 
 export default {
 	name: "XViewer",
-	mixins: [mxLayoutStoreMap],
+	mixins: [mxLayoutStoreMap, mxUserStoreMap],
+	methods: {
+		hideViewerHandler(){
+			if(this.isSigned){
+				this.hideViewer();
+			}
+		}
+	}
 }
 </script>
 

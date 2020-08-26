@@ -1,0 +1,15 @@
+/**
+ * 扩展 bootstrap 原有的overflow
+ *
+ */
+@each $value in $overflows {
+
+	.overflow-#{$value} { overflow: $value !important; }
+
+	@each $prop in (x, y) {
+		.overflow-#{$prop}-#{$value} {
+			overflow-#{$prop}: $value !important;
+		}
+	}
+
+}

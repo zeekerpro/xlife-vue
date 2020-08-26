@@ -9,6 +9,7 @@ import "@/plugins/svg";
 import "@/plugins/directives";
 import "@/assets/styles/app.scss";
 import 'vue2-animate/dist/vue2-animate.min.css';
+import '@/plugins/vTooltip';
 
 Vue.config.productionTip = false;
 

@@ -78,6 +78,7 @@ import mxLayoutStoreMap from '@/mixins/storeMap/layout';
 export default {
 	name: "signup",
 	inject: ['reload'],
+	mixins: [mxLayoutStoreMap],
 	data(){
 		return {
 			model: {
