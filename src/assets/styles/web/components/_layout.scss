@@ -18,6 +18,13 @@
 	border-bottom: $header-border-bottom;
 }
 
+#APP-SIDEBAR {
+	@include merge_class(flex-column, position-fixed, t-0, h-100);
+	z-index: $sidebar-z-index;
+	@include transition($sidebar-transition);
+	background-color: $sidebar-background-color;
+}
+
 #APP-FOOTER {
 	height: $footer-height;
 	background-color: $footer-background-color;

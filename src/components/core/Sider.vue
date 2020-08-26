@@ -19,13 +19,6 @@ export default {
 
 <style lang="scss" scoped>
 
-#APP-SIDEBAR {
-	@include merge_class(flex-column, position-fixed, t-0, h-100);
-	z-index: $sidebar-z-index;
-	@include transition($sidebar-transition);
-	background-color: $sidebar-background-color;
-}
-
 .open {
 	width: $sidebar-width;
 	border-right: $sidebar-border-right;
