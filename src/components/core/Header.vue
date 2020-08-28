@@ -44,7 +44,7 @@ export default {
 	data(){
 		return {
 			logo: {
-				url: require("@/assets/images/logo.png"),
+				url: this.$images.logoPng,
 				text: "x-life"
 			},
 			mainEntries: [

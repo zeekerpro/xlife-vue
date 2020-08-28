@@ -10,11 +10,14 @@ import "@/plugins/directives";
 import "@/assets/styles/app.scss";
 import 'vue2-animate/dist/vue2-animate.min.css';
 import '@/plugins/vTooltip';
+import images from '@/plugins/images';
+
+Vue.prototype.$images = images;
 
 Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount("#app");
