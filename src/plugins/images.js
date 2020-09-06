@@ -13,7 +13,7 @@ import StringUtil from '@/utils/StringUtil';
 
 const PATH = require('path');
 
-// 导入所有图片，并做base64编码
+// 导入assets/images/ 所有图片，并做base64编码
 const FILES = require.context('@/assets/images', true, /\.(png|jpg|jpeg|gif)$/);
 const IMAGES = {}
 
