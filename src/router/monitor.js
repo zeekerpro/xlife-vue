@@ -5,12 +5,29 @@
  */
 
 import NProgress from "nprogress";
+import store from "store";
+import userService from "services/rest/userService";
+
+// 免登录白名单
+const whiteList = []
 
 export function monitor(router){
 
-	router.beforeEach((to, from ,next) => {
+	router.beforeEach(async (to, from ,next) => {
 		if(to.path != from.path){
 			NProgress.start();	
+
+
+			let isSigned = store.getters['user/isSigned'];
+			let isRouterInit = store.state.routes.isInit;
+
+			// 2. 未获取动态路由 -> 后端请求路由数据
+			if(!isRouterInit){
+				await userService.getPermission();
+				next({ ...to, replace: true }); // hack方法 确保addRoutes已完成
+			}else{
+			}
+
 		}
 		next();
 	});

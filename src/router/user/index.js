@@ -6,9 +6,14 @@ export default {
 	name: 'user',
 	redirect: '/user/list',
 	components: {
+		default: () => {
+			return import(/* webpackChunkName "user" */"@/components/base/renderRouterView") 
+		}
+		/*
 		default: {
 			render: h => h("router-view")
 		}
+		*/
 	},
 	children: [
 		listRoute,

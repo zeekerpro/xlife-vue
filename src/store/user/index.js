@@ -2,6 +2,7 @@ import Token from '@/utils/Token';
  
 const state = {
 	token: Token.get(),
+	userInfo: null
 }
 
 const mutations = {
@@ -19,7 +20,14 @@ const mutations = {
 	}
 }
 
-const actions = {}
+const actions = {
+	resetToken(context, arg){
+		return new Promise(resolve => {
+			context.commit('setToken', null);
+			resolve();
+		})
+	}
+}
 
 const getters = {
 	isSigned: (state) => !!state.token,

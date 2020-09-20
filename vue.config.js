@@ -1,4 +1,6 @@
+'use strict';
 const path = require('path');
+const defaultSettings = require('./src/settings');
 
 function resolve(dir){
 	return path.join(__dirname, dir);
@@ -6,12 +8,13 @@ function resolve(dir){
 
 let svgImgs =  resolve("src/assets/svg/imgs");
 
-const title = "xlife"
+const title = defaultSettings.title;
 
 module.exports = {
-	lintOnSave: false, 
+	lintOnSave: false,  // process.env.NODE_ENV === 'development', 关闭eslint
 	publicPath: "/",
 	runtimeCompiler: true,
+	productionSourceMap: false,
 	parallel: require('os').cpus().length > 1, // 并行构建
 	css: {
 		extract: true,
@@ -37,11 +40,27 @@ module.exports = {
       }
     }
 		*/
-
 	},
 	// webpack 基础配置
 	configureWebpack: {
-		name: title
+		name: title,
+		// 解析模块的规则
+		resolve: {
+			// 配置路径别名
+			alias: {
+				'components':			resolve('./src/components'),
+				'services':				resolve('./src/services'),
+				'utils':					resolve('./src/utils'),
+				'store':					resolve('./src/store'),
+				'plugins':				resolve('./src/plugins'),
+				'mixins':					resolve('./src/mixins'),
+				'views':					resolve('./src/views'),
+				'router':					resolve('./src/router')
+			},
+			// 配置省略文件的后缀名，可以简写后缀名，默认为js 和json
+			extensions: ['js', 'json', 'jsx'],
+			// modules: [] 告诉webpack解析模块是去找哪个目录 -> node_modules
+		}
 	},
 	// webpack 高级链式配置，可以更细粒度的配置webpack
 	chainWebpack: (config) => {

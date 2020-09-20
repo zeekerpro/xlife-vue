@@ -11,7 +11,7 @@ import blogRoutes from "./blog";
 // 路由守卫监控路由跳转
 import {monitor} from "./monitor.js";
 
-const routes = [
+const staticRoutes = [
 	{
 		path: "/",
 		name: "root",
@@ -31,8 +31,15 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+	scrollBehavior: () => ({ y: 0 }),
+  routes: staticRoutes
 });
+
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter() {
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher; // reset router
+}
 
 // 监视路由跳转
 monitor(router);

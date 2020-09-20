@@ -1,12 +1,10 @@
-import { mapActions, mapMutations, mapGetters } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
+const { mapState, mapActions, mapMutations, mapGetters} = createNamespacedHelpers('user')
 
 export default {
 
 	computed: {
-		...mapGetters('user', [
-			'isSigned',
-			'userInfo'
-		]),
+	 ...mapGetters(['isSigned', 'userInfo']),
 	},
 
 }
