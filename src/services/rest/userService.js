@@ -68,17 +68,12 @@ class UserService extends RestService{
 	 *	获取用户权限，设置路由
 	 */
 	async getPermission(){
-		const url = "/users/permission";
+		const url = "/routes";
 		try {
 			let ret = await this.get({from: url});
-			const asyncRoutes = PermissionUtil.resolveRoutes(ret.data.routes);
+			const asyncRoutes = PermissionUtil.resolveRoutes(ret.data);
 			// 1. 后置添加404页面,防止刷新404, 考虑是否直接后端返回? todo
-			asyncRoutes.push({
-				path: "*",
-				name: "NotFound",
-        redirect: "/404",
-        hidden: true
-			})
+			asyncRoutes.push({ path: "*", name: "NotFound", redirect: "/404", hidden: true })
 			// 2. 路由数据存储到vuex
 			store.commit('routes/setRoutes');
 			// 3.	动态路由添加到路由器

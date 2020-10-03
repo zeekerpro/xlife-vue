@@ -53,8 +53,8 @@ class AbstractService {
 	}
 
 	// 上传文件
-	// upload({file: formData})
-	upload({file, to = "/upload"} = {}){
+	// upload({fileData: formData})
+	upload({fileData, to = "/upload"} = {}){
 		let url = this._baseUrl + ro;
 		return request({
 			url: url,
@@ -62,7 +62,7 @@ class AbstractService {
 			headers: {
 				'Content-Type': 'multipart/form-data;charset=UTF-8'
 			},
-			data: file 
+			data: fileData
 		});
 	}
 

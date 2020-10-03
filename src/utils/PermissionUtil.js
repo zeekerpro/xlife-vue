@@ -12,16 +12,21 @@ class PermissionUtil {
 
 		routerList.forEach(e => {
 			let newRoute = {
-				path: e.url,
+				path: e.route_path,
 				name: e.name
 			}
 
 			if(e.components) {
-				const compnents = {};
-				e.compnents.forEach((item, key) => {
-					compnents[key] = () => { return import(`${item}`) }
+				const components= {};
+				e.components.forEach((item) => {
+					let viewName = item.view_name;
+					let viewPath = item.url;
+					let webpackChunkName = item.webpack_chunk_name;
+					components[viewName] = () => { 
+						return import(`@/${viewPath}`) 
+					}
 				});
-				newRoute = {...newRoute, compnents: compnents}
+				newRoute = {...newRoute, components: components}
 			}
 
 			// 递归设置子路由
@@ -30,27 +35,29 @@ class PermissionUtil {
 				newRoute = {...newRoute, children: children};
 			}
 
-			if(StringUtil.isBlank(e.redirect)){
-				newRoute = {...newRoute, redirect: e.redirect};
+			// redirect
+			if(e.redirect){
+				newRoute = {...newRoute, redirect: e.redirect.path};
 			}
 
+			/*
 			if(e.menu){
 				newRoute = {...newRoute, hidden: true};
 			}
+			*/
 
+		 /*
 			if(StringUtil.isBlank(e.icon)){
 				newRoute = {...newRoute, meta: {icon: e.icon}}
 			}
-
-			if(StringUtil.isBlank(e.title)){
-				newRoute.meta.title = e.title
-			}
+			*/
 
 			routes.push(newRoute);
 		})
 
 		return routes;
 	}
+
 }
 
 export default PermissionUtil;

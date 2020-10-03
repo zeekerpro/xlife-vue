@@ -1,15 +1,8 @@
 <template>
   <keep-alive v-if="keepAlive">
-    <component
-      :is="TargetComponent"
-      v-bind="$attrs"
-      v-on="$listeners"/>
+    <component :is="TargetComponent" v-bind="$attrs" v-on="$listeners"/>
   </keep-alive>
-  <component
-    v-else
-    :is="TargetComponent"
-    v-bind="$attrs"
-    v-on="$listeners"/>
+  <component v-else :is="TargetComponent" v-bind="$attrs" v-on="$listeners"/>
 </template>
 
 

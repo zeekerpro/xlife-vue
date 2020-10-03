@@ -16,17 +16,13 @@ export function monitor(router){
 	router.beforeEach(async (to, from ,next) => {
 		if(to.path != from.path){
 			NProgress.start();	
-
-
 			let isSigned = store.getters['user/isSigned'];
-			let isRouterInit = store.state.routes.isInit;
 
-			// 2. 未获取动态路由 -> 后端请求路由数据
-			if(!isRouterInit){
+			// 未获取动态路由 -> 后端请求路由数据
+			if(!store.state.routes.isInit){
 				await userService.getPermission();
 				next({ ...to, replace: true }); // hack方法 确保addRoutes已完成
-			}else{
-			}
+			}else{}
 
 		}
 		next();

@@ -17,7 +17,7 @@ const staticRoutes = [
 		name: "root",
 		component: () => import("@/layouts/default"),
 		children: [
-			userRoutes,
+			//userRoutes,
 			expenseRoutes,
 			blogRoutes
 		]
