@@ -10,6 +10,7 @@ import userService from '@/services/rest/userService';
 export default {
 	name: 'App',
 	mounted(){
+		// 设置用户登录信息
 		userService.initSignState();
 	},
 }

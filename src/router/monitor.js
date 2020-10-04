@@ -17,13 +17,14 @@ export function monitor(router){
 		if(to.path != from.path){
 			NProgress.start();	
 			let isSigned = store.getters['user/isSigned'];
-
-			// 未获取动态路由 -> 后端请求路由数据
-			if(!store.state.routes.isInit){
-				await userService.getPermission();
-				next({ ...to, replace: true }); // hack方法 确保addRoutes已完成
-			}else{}
-
+			if(!isSigned){
+				next("/");
+			}else{
+				if(!store.state.routes.isInit){
+					await userService.getRoutes();
+					next({...to, replace: true});
+				}
+			}
 		}
 		next();
 	});

@@ -83,18 +83,13 @@ export default {
 					// 登录成功
 					this.hideViewer();
 					// 刷新页面 
-					this.reload();
-					this.$toast({
-						text: "登录成功",
-						duration: 2000,
-						mode: 'primary'
-					});
+					//this.reload();
+					this.$toast({ text: "登录成功", duration: 2000, mode: 'primary' });
+					// 获取用户路由权限数据
+					userService.getRoutes();
 					break;
 				case HttpStatusCodes.UNAUTHORIZED:
-					this.errors = {
-						account: ["认证错误"],
-						password: ["认证错误"]
-					};
+					this.errors = { account: ["认证错误"], password: ["认证错误"] };
 					break;
 			}
 		},
@@ -105,7 +100,3 @@ export default {
 }
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>

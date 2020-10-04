@@ -38,7 +38,7 @@ function responseErrorHandler(error){
 	let response = error.response;
 	switch(response.status){
 		case HttpStatusCodes.UNAUTHORIZED:
-			// 认证失败，删除token，转到登录页
+			// 认证失败，删除token，转到登录
 			store.commit('user/setToken', null);
 			store.commit('layout/showViewer', 'views/user/Signin');
 			break;

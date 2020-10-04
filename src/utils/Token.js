@@ -17,4 +17,5 @@ export default class Token{
 	static remove(){
 		return localStorage.removeItem(this.#TOKEN_KEY);
 	}
+
 }
