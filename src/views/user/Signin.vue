@@ -72,25 +72,20 @@ export default {
 	methods: {
 		async submit(){
 			let data = {
-				user: {
-					account: this.model.account,
-					password: this.model.password
-				}
+				user: { account: this.model.account, password: this.model.password }
 			};
-			let ret = await userService.signin(data);
-			switch (ret.status) {
-				case HttpStatusCodes.OK: 
-					// 登录成功
-					this.hideViewer();
-					// 刷新页面 
-					//this.reload();
-					this.$toast({ text: "登录成功", duration: 2000, mode: 'primary' });
-					// 获取用户路由权限数据
-					userService.getRoutes();
-					break;
-				case HttpStatusCodes.UNAUTHORIZED:
-					this.errors = { account: ["认证错误"], password: ["认证错误"] };
-					break;
+			try {
+				await userService.signin(data);
+				// 登录成功
+				this.hideViewer();
+				// 刷新页面 
+				//this.reload();
+				this.$toast({ text: "登录成功", duration: 2000, mode: 'primary' });
+				// 获取用户路由权限数据
+				userService.getRoutes();
+			}catch(e){
+				console.log(e);
+				this.errors = { account: [e.message], password: [e.message] };
 			}
 		},
 		toSignup(){

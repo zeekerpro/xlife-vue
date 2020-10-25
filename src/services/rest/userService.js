@@ -26,6 +26,12 @@ class UserService extends RestService{
 		} catch(error){
 			ret = error.response;
 		}
+		switch(ret.status){
+			case HttpStatusCodes.OK:
+				break;
+			case HttpStatusCodes.UNAUTHORIZED:
+				throw Error("认证失败");
+		}
 		return ret;
 	}
 
