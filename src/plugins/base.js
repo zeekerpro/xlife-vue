@@ -9,6 +9,7 @@ import Toast from "@/components/base/toast";
 import AsyncComponent from "@/components/base/asyncComponent";
 import Validator from "@/components/base/validator";
 import {XTextField, XForm} from "@/components/base/form";
+import LazyImg from "@/components/base/lazyImg";
 
 Vue.use(CardSlider);
 Vue.use(RangeSlider);
@@ -21,3 +22,4 @@ Vue.use(AsyncComponent);
 Vue.use(Validator);
 Vue.use(XForm);
 Vue.use(XTextField);
+Vue.use(LazyImg);

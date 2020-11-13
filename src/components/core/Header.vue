@@ -1,7 +1,8 @@
 <template>
 	<header id="APP-HEADER">
 		<div class="header-routes flex-grow-1 d-flex align-items-center">
-			<img :src="logo.url" alt="" class="h-75">
+			<!--img :src="logo.url" alt="" class="h-75"-->
+			<lazy-img :src="logo.url" class="h-75"></lazy-img>
 			<a href="" class="logo-text ">
 				{{ logo.text }}
 			</a>
