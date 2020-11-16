@@ -1,0 +1,78 @@
+[
+    {
+        "id": "00b82eb6e50a45a495df301b0a3cde8b",
+        "title": "SV ADMIN",
+        "name": "ADMIN",
+        "type": "MD",
+        "children": [
+            {
+                "id": "06f1082640a0440b97009d536590cf4f",
+                "title": "系统管理",
+                "name": "system",
+                "icon": "el-icon-setting",
+                "uri": "/system",
+                "componentPath": "modules/Layout",
+                "type": "MN",
+                "children": [
+                    {
+                        "id": "b9bd920263bb47dbbfbf4c6e47cc087b",
+                        "title": "用户管理",
+                        "name": "principal",
+                        "uri": "principal",
+                        "componentPath": "views/system/principal",
+                        "type": "MN",
+                        "children": [
+                            { "id": "b37f971139ca49ab8c6506d4b30eddb3", "title": "新增", "name": "create", "type": "BT" },
+                            { "id": "d3bcee30ec03432db9db2da999bb210f", "title": "编辑", "name": "edit", "type": "BT" },
+                            { "id": "7c2ce28dcedf439fabc4ae9ad94f6899", "title": "删除", "name": "delete", "type": "BT" },
+                            { "id": "bdf4d9e8bf004e40a82b80f0e88c866c", "title": "修改密码", "name": "resetPwd", "type": "BT" },
+                            { "id": "ba09f8a270e3420bb8877f8def455f6f", "title": "选择角色", "name": "setRole", "type": "BT" }
+                        ]
+                    },
+                    {
+                        "id": "c47c8ad710774576871739504c6cd2a8",
+                        "title": "角色管理",
+                        "name": "role",
+                        "uri": "role",
+                        "componentPath": "views/system/role",
+                        "type": "MN",
+                        "children": [
+                            { "id": "81c0dca0ed2c455d9e6b6d0c86d24b10", "title": "新增", "name": "create", "type": "BT" },
+                            { "id": "19a2bf03e6834d3693d69a70e919d55e", "title": "编辑", "name": "edit", "type": "BT" },
+                            { "id": "6136cc46c45a47f4b2f20e899308b097", "title": "删除", "name": "delete", "type": "BT" },
+                            { "id": "ad5cf52a78b54a1da7c65be74817744b", "title": "设置菜单", "name": "setMenu", "type": "BT" }
+                        ]
+                    },
+                    {
+                        "id": "8b5781640b9b4a5cb28ac616da32636c",
+                        "title": "资源管理",
+                        "name": "resource",
+                        "uri": "resource",
+                        "componentPath": "views/system/resource",
+                        "type": "MN",
+                        "children": [
+                            { "id": "d4182147883f48069173b7d173e821dc", "title": "新增", "name": "create", "type": "BT" },
+                            { "id": "935fcb52fffa45acb2891043ddb37ace", "title": "编辑", "name": "edit", "type": "BT" },
+                            { "id": "3f99d47b4bfd402eb3c787ee10633f77", "title": "删除", "name": "delete", "type": "BT" }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "fc8194b529fa4e87b454f970a2e71899",
+        "title": "SV HMI",
+        "name": "HMI",
+        "type": "MD",
+        "children": [
+            { "id": "eb5370681213412d8541d171e9929c84", "title": "启动检测","name": "001" },
+            { "id": "06eb36e7224043ddbb591eb4d688f438", "title": "设备信息","name": "002" },
+            { "id": "76696598fd46432aa19d413bc15b5110", "title": "AI模型库","name": "003" },
+            { "id": "2896f3861d9e4506af8120d6fcb59ee1", "title": "保养维修","name": "004" },
+            { "id": "91825c6d7d7a457ebd70bfdc9a3a2d81", "title": "继续","name": "005" },
+            { "id": "24694d28b2c943c88487f6e44e7db626", "title": "暂停","name": "006" },
+            { "id": "225387753cf24781bb7c853ee538d087", "title": "结束","name": "007" }
+        ]
+    }
+]
