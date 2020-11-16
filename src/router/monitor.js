@@ -19,13 +19,14 @@ export function monitor(router){
 			let isSigned = store.getters['user/isSigned'];
 			if(!isSigned){
 				next("/");
-			}else{
-				if(!store.state.routes.isInit){
-					await userService.getRoutes();
-					next({...to, replace: true});
-				}
-			}
+			}		
 		}
+
+		if(!store.state.routes.isInit){
+			await userService.getRoutes();
+			next({...to, replace: true});
+		}
+
 		next();
 	});
 

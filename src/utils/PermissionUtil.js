@@ -29,12 +29,6 @@ class PermissionUtil {
 				newRoute = {...newRoute, components: components}
 			}
 
-			// 递归设置子路由
-			if(e.children) {
-				const children = PermissionUtil.resolveRoutes(e.children);
-				newRoute = {...newRoute, children: children};
-			}
-
 			// redirect
 			if(e.redirect){
 				newRoute = {...newRoute, redirect: e.redirect.path};
@@ -51,6 +45,12 @@ class PermissionUtil {
 				newRoute = {...newRoute, meta: {icon: e.icon}}
 			}
 			*/
+
+			// 递归设置子路由
+			if(e.children) {
+				const children = PermissionUtil.resolveRoutes(e.children);
+				newRoute = {...newRoute, children: children};
+			}
 
 			routes.push(newRoute);
 		})
