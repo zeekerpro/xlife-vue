@@ -19,14 +19,15 @@ export function monitor(router){
 			let isSigned = store.getters['user/isSigned'];
 			if(!isSigned){
 				next("/");
-			}		
+			}else{
+				next({...to, replace: true});
+			}
+		}else{
+			// 刷新页面重新获取路由, 后端配置路由后立即生效
+			if(!store.getters['routes/isInit']){
+				await userService.getRoutes();
+			}
 		}
-
-		if(!store.state.routes.isInit){
-			await userService.getRoutes();
-			next({...to, replace: true});
-		}
-
 		next();
 	});
 

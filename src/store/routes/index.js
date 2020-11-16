@@ -20,9 +20,15 @@ const actions = {
 	}
 }
 
+const getters = {
+	isInit: (state) => state.isInit,
+	routes: (state) => state.routes,
+}
+
 export default {
 	namespaced: true,
 	state,
 	mutations,
-	actions
+	actions,
+	getters
 }
