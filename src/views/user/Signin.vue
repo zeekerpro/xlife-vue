@@ -78,13 +78,10 @@ export default {
 				await userService.signin(data);
 				// 登录成功
 				this.hideViewer();
-				// 刷新页面 
-				//this.reload();
-				this.$toast({ text: "登录成功", duration: 2000, mode: 'primary' });
+				//this.$toast({ text: "登录成功", duration: 2000, mode: 'primary' });
 				// 获取用户路由权限数据
 				userService.getRoutes();
 			}catch(e){
-				console.log(e);
 				this.errors = { account: [e.message], password: [e.message] };
 			}
 		},

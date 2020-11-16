@@ -8,27 +8,32 @@ import NProgress from "nprogress";
 import store from "store";
 import userService from "services/rest/userService";
 
+NProgress.configure({ showSpinner: false }) // NProgress Configuration
+
 // 免登录白名单
-const whiteList = []
+const whiteList = ['/'];
 
 export function monitor(router){
 
 	router.beforeEach(async (to, from ,next) => {
-		if(to.path != from.path){
-			NProgress.start();	
-			let isSigned = store.getters['user/isSigned'];
-			if(!isSigned){
-				next("/");
+		const isSigned = store.getters['user/isSigned'];
+		NProgress.start();	
+		if(isSigned){
+			if(store.getters['routes/isInit']){
+				// 已登陆
+				next();
 			}else{
+				//	登录但未获取路由权限信息
+				await userService.getRoutes();
 				next({...to, replace: true});
 			}
 		}else{
-			// 刷新页面重新获取路由, 后端配置路由后立即生效
-			if(!store.getters['routes/isInit']){
-				await userService.getRoutes();
+			if(whiteList.indexOf(to.path) !== -1){
+				next();
+			}else{
+				next('/');
 			}
 		}
-		next();
 	});
 
 	router.afterEach((to, from ,next) => {

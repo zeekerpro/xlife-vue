@@ -15,7 +15,6 @@ const mutations = {
 const actions = {
 	refreshRouter({commit}, routes){
 		commit('setRoutes', routes);
-		// todo	local storege routes
 		refreshRouterWith(routes);
 	}
 }
