@@ -9,8 +9,12 @@ function getJsonDataFrom(file){
 }
 
 module.exports = function(app){
-	app.get('/rest/routes', function(req, res){
-		let json = getJsonDataFrom('../json/menu.json5');
-		res.json(Mock.mock(json));
-	})
+	if(process.env.MOCK == 'true'){
+
+		app.get('/rest/routes', function(req, res){
+			let json = getJsonDataFrom('../json/menu.json5');
+			res.json(Mock.mock(json));
+		})
+
+	}
 }
