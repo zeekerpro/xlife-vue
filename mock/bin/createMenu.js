@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
 const execSync = require('child_process').execSync //同步子进程
+const JSON5 = require('json5')
 
 const resolve = dir => path.join(__dirname, dir)
 
@@ -27,6 +28,7 @@ const format = (data = new Date(), fmt = 'yyyy-MM-dd') => {
     return fmt
 }
 
+const table_name = "permissions"
 
 // 导出的文件目录位置
 const SQL_PATH = resolve('../sql/menu.sql')
@@ -66,9 +68,9 @@ function createSQL(data, name = '', pid = '0', arr = []) {
 
 
 
-fs.readFile(resolve('../src/mock/menu.json'), 'utf-8', (err, data) => {
+fs.readFile(resolve('../json/menu.json5'), 'utf-8', (err, data) => {
 
-    const menuList = createSQL(JSON.parse(data))
+    const menuList = createSQL(JSON5.parse(data))
 
     const sql = menuList
         .map(sql => {
@@ -77,15 +79,15 @@ fs.readFile(resolve('../src/mock/menu.json'), 'utf-8', (err, data) => {
                 value += ','
                 value += v ? `'${v}'` : null
             }
-            return 'INSERT INTO `t_sys_resource` VALUES (' + value.slice(1) + ')' + '\n'
+            return 'INSERT INTO `'+table_name+'` VALUES (' + value.slice(1) + ')' + '\n'
         })
         .join(';')
 
 
     const mySQL =
-        'DROP TABLE IF EXISTS `t_sys_resource`;' +
+        'DROP TABLE IF EXISTS `'+table_name+'`;' +
         '\n' +
-        'CREATE TABLE `t_sys_resource` (' +
+        'CREATE TABLE `'+table_name+'` (' +
         '\n' +
         '`id` varchar(64) NOT NULL,' +
         '\n' +

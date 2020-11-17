@@ -38,8 +38,10 @@ module.exports = {
           '^/api': ''
         }
       }
-    }
+    },
 		*/
+		// mock config
+		before: require('./mock/index')
 	},
 	// webpack 基础配置
 	configureWebpack: {
